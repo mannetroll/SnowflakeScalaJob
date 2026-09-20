@@ -341,6 +341,57 @@ warehouse privileges; expired/unavailable statistics fail the live export.
 See [Snowflake operator statistics](https://docs.snowflake.com/en/sql-reference/functions/get_query_operator_stats)
 and [yWorks GraphML format](https://docs.yworks.com/yfiles/doc/developers-guide/graphml.html).
 
+## Export a query profile as two CSV files using SQL
+
+Run [sql/export-query-profile-csv.sql](sql/export-query-profile-csv.sql) in one
+Snowflake session. Set `QP_QUERY_ID` at the top to the required query ID; the
+copied `Query - <UUID>` heading is also accepted. The supplied context uses
+`SYSADMIN`, `SCALING_BENCH_WH`, and `RISKDEMO.EAD_LGD_DEMO`.
+
+The script snapshots the existing operator statistics once and writes exactly
+named, uncompressed files to your Snowflake user stage:
+
+```text
+@~/query-profile-csv/<query-id>/nodes.csv
+@~/query-profile-csv/<query-id>/relationships.csv
+```
+
+| File | Contents |
+| --- | --- |
+| `nodes.csv` | One row per operator across all steps: node/query/step/operator IDs, type, full table name and label, root flag, row counts, execution fraction, parent list, full attributes/statistics/timing JSON, and `RAW_OPERATOR_JSON` containing every original field including nulls. |
+| `relationships.csv` | One row per reported parent: relationship ID, source/target node IDs, query and step, source/target operator numbers, parent index, `DATA_FLOW` type, and source output rows. |
+
+Node IDs use `<query-id>:s<step-id>:n<operator-id>`. Relationship sources are
+input/child operators and targets are consuming/parent operators. All shared
+branches are retained. Roots have no outgoing parent edges, and no artificial
+edges join the separate steps. Profiles with no edges still produce a header-only
+`relationships.csv`.
+
+CSV fields containing JSON, quotes or commas are quoted and escaped by Snowflake.
+SQL nulls appear as empty CSV fields; `RAW_OPERATOR_JSON` preserves explicit JSON
+nulls. Names and expressions are not truncated. `EXECUTION_FRACTION_OF_STEP` is a
+fraction such as `0.6`, meaning 60% of that step, not of the whole job.
+
+The final script result contains counts, stage paths and two ready-to-run `GET`
+statements. Run those in SnowSQL or a connector supporting `GET` to download the
+files; change the suggested local directory as needed. Snowsight can execute the
+export but cannot execute the local download. For example, after exporting the
+demo CTAS, the project's existing connector helper can download both files:
+
+```bash
+.venv/bin/python connect/snowflake_connection.py --query \
+  "GET @~/query-profile-csv/01c73375-0005-833e-0001-91ae00232802/nodes.csv file:///tmp/query-profile-csv/;"
+.venv/bin/python connect/snowflake_connection.py --query \
+  "GET @~/query-profile-csv/01c73375-0005-833e-0001-91ae00232802/relationships.csv file:///tmp/query-profile-csv/;"
+```
+
+The script retrieves the profile without rerunning the original query. Temporary
+export tables are dropped after success and disappear at session end after a
+failure. Stage files remain for download; exporting the same query again replaces
+its two files. These COPY operations use warehouse compute. See Snowflake's
+[CSV unload](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location)
+and [GET](https://docs.snowflake.com/en/sql-reference/sql/get) documentation.
+
 ## Artifacts and lifecycle
 
 Live run artifacts under `build/ead-lgd/<run-id>/`:

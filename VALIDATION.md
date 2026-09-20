@@ -166,3 +166,35 @@ non-overlapping node boxes, and rejection of incomplete or contradictory evidenc
 off: 23 passed, three live suites skipped, zero failures/errors. No dependencies
 were added. Generated profiles remain under ignored `build/` and are removed by
 `clean`.
+
+## SQL CSV export — 2026-09-20
+
+Added `sql/export-query-profile-csv.sql`. Its `QP_QUERY_ID` input accepts a bare
+UUID or a pasted `Query - <UUID>` heading. It captures the operator profile once,
+validates node identities and parent references, and unloads `nodes.csv` and
+`relationships.csv` to a query-specific directory on the current user's stage.
+The returned result includes download commands. Temporary export tables are
+dropped after success; the original query is never rerun.
+
+The unchanged script passed live for
+`01c73375-0005-833e-0001-91ae00232802` using SYSADMIN on SCALING_BENCH_WH.
+The export block's query ID was `01c73395-0005-833e-0001-91ae002329fa`.
+Both CSV files were downloaded successfully to
+`build/query-profiles/01c73375-0005-833e-0001-91ae00232802/`:
+
+| Artifact | Observed result |
+| --- | --- |
+| `nodes.csv` | 13 rows, 17 columns, 16,759 bytes |
+| `relationships.csv` | 11 rows, 10 columns, 2,528 bytes |
+| Full node evidence | Every decoded `RAW_OPERATOR_JSON` and all four JSON columns match the earlier saved Snowflake profile |
+| Names and relationships | Full table names retained; every edge matches the reported parent list; no dangling or cross-step edges |
+| `export-result.json` | SQL execution IDs, returned file paths/counts and successful GET results |
+| `verification.json` | CSV/JSON round-trip and graph consistency checks passed |
+
+The same script was also run with input
+`Query - 01c73375-0005-833e-0001-91ae002326b2`, an existing one-node CREATE TABLE
+profile. It returned one node and zero relationships, and its downloaded
+`relationships.csv` contained exactly the ten-column header and no data rows
+(171 bytes). This verifies the empty-edge case and copied-heading input without
+executing another business workload. No Scala/application code changed for this
+SQL-only addition, so the earlier Scala test suite was not rerun.
