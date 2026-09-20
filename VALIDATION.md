@@ -130,3 +130,39 @@ REQUIRE_QUERY_PROFILES=true \
 The [README](README.md) includes Unix/PowerShell configuration and IntelliJ
 instructions. This is an invented educational EAD/LGD model. Passing the checks
 does not establish regulatory or production suitability.
+
+## Query Profile GraphML export — 2026-09-20
+
+Added `QueryProfileGraphmlExportTest`, accepting `QUERY_ID` or Gradle
+`-PqueryId=<UUID>` and optionally `QUERY_PROFILE_OUTPUT` / `-PqueryProfileOutput`.
+It reads `GET_QUERY_OPERATOR_STATS` for an existing query, closes the session,
+and creates yEd GraphML plus a source-statistics JSON sidecar. It never executes
+the original query or reruns the EAD/LGD job.
+
+The live export ScalaTest passed for
+`01c73375-0005-833e-0001-91ae00232802`, producing:
+
+```text
+build/query-profiles/01c73375-0005-833e-0001-91ae00232802.graphml
+build/query-profiles/01c73375-0005-833e-0001-91ae00232802.operators.json
+build/query-profiles/TEST-QueryProfileGraphmlExportTest-live.xml
+```
+
+The exported profile has 13 operators, two execution-step groups and 11 directed
+edges. XML parsing and assertions confirm all reported operators and parent
+connections. Full table/object names are visible labels; unabridged SQL
+expressions and statistics remain in node properties. Layout positions, colors,
+row-count edge labels and per-step execution percentages are included. Node IDs
+include both step and operator ID, preserving the separate operator `0` in each
+step. The generated file was opened through macOS Launch Services in the installed
+yEd application; UI inspection was unavailable because macOS denied assistive
+access. An attempted standalone XSD check was inconclusive: the validators also
+reject yEd's own bundled group-node example against the published schema.
+
+Six added offline tests cover ID validation, multiple steps, shared-parent edges,
+full names, XML escaping, Unicode/control characters, deterministic layout,
+non-overlapping node boxes, and rejection of incomplete or contradictory evidence.
+`offlineTest`: 23 passed, zero skipped/failed. Standard `test` with the live gate
+off: 23 passed, three live suites skipped, zero failures/errors. No dependencies
+were added. Generated profiles remain under ignored `build/` and are removed by
+`clean`.

@@ -38,7 +38,7 @@ Remove-Item Env:CUSTOMER_COUNT
 .\gradlew.bat installDist
 ```
 
-`offlineTest` excludes both live suites and forces the gate off. `test` discovers
+`offlineTest` excludes all live suites, including the profile exporter, and forces the gate off. `test` discovers
 ScalaTest suites through `@RunWith(JUnitRunner)` and Gradle `useJUnit()`. With no
 `RUN_SNOWFLAKE_IT=true`, integration cancels before reading connection settings or
 opening a session. After opt-in, missing settings, authentication failures and
@@ -285,6 +285,61 @@ completion and reports `profilesVerified=false`. See official
 [query history](https://docs.snowflake.com/en/sql-reference/functions/query_history),
 [operator statistics](https://docs.snowflake.com/en/sql-reference/functions/get_query_operator_stats)
 and [Snowsight history](https://docs.snowflake.com/en/user-guide/ui-snowsight-activity).
+
+## Export a query profile to yEd GraphML through ScalaTest
+
+`QueryProfileGraphmlExportTest` takes an existing query ID, reads its operator
+statistics from Snowflake and writes a `.graphml` file. It uses the same local
+connection configuration. It does not regenerate inputs or execute the original
+query. For the demonstrated CTAS:
+
+```bash
+RUN_SNOWFLAKE_IT=true ./gradlew test \
+  --tests '*QueryProfileGraphmlExportTest' \
+  -PqueryId=01c73375-0005-833e-0001-91ae00232802 --rerun-tasks
+```
+
+PowerShell:
+
+```powershell
+$env:RUN_SNOWFLAKE_IT = 'true'
+.\gradlew.bat test --tests '*QueryProfileGraphmlExportTest' `
+  -PqueryId=01c73375-0005-833e-0001-91ae00232802 --rerun-tasks
+```
+
+Output:
+
+```text
+build/query-profiles/01c73375-0005-833e-0001-91ae00232802.graphml
+build/query-profiles/01c73375-0005-833e-0001-91ae00232802.operators.json
+```
+
+Use **File → Open** in yEd to open the `.graphml` file. Each execution step has
+its own group: this CTAS has one creation operator in Step 1 and twelve operators
+in Step 2. The file includes node positions, colors, arrows and row counts.
+Arrows point from each input operator to its consuming parent, as in Snowsight.
+Operator IDs are scoped by step, and shared branches retain every parent edge.
+Full operator and table/object names appear on the nodes without abbreviation.
+Full SQL expressions, attributes, statistics and timing breakdowns are retained
+in node properties and descriptions. These are the physical names reported by
+Snowflake, including generated temporary-table names. Percentages refer to the
+individual step. Other checkpoint queries require their own exports.
+
+Optional inputs: `-PqueryProfileOutput=/path/profile.graphml`, or environment
+variables `QUERY_ID` and `QUERY_PROFILE_OUTPUT`. Gradle properties take precedence.
+Both a bare UUID and the copied heading `Query - <UUID>` are accepted. In IntelliJ,
+run `QueryProfileGraphmlExportTest` with environment variables
+`RUN_SNOWFLAKE_IT=true` and `QUERY_ID=<UUID>`, using the project root as the working
+directory and the existing JDK/connection setup. Without a query ID the export
+test skips; invalid IDs fail before connecting.
+
+The `.operators.json` sidecar preserves the source evidence. The pure Scala API
+`QueryProfileGraphml.write(queryId, Json.mapper.readTree(jsonFile), outputPath)`
+can also render a previously saved profile without connecting. Eligible profiles
+are available from Snowflake for fourteen days and require the documented
+warehouse privileges; expired/unavailable statistics fail the live export.
+See [Snowflake operator statistics](https://docs.snowflake.com/en/sql-reference/functions/get_query_operator_stats)
+and [yWorks GraphML format](https://docs.yworks.com/yfiles/doc/developers-guide/graphml.html).
 
 ## Artifacts and lifecycle
 

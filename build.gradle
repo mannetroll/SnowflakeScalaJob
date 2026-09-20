@@ -47,6 +47,10 @@ tasks.withType(Test).configureEach {
     maxHeapSize = '2g'
     jvmArgs arrowJvmArgs
     systemProperty 'org.slf4j.simpleLogger.defaultLogLevel', 'warn'
+    // Forward these non-secret export inputs into the forked ScalaTest JVM.
+    ['queryId', 'queryProfileOutput'].each { key ->
+        if (project.hasProperty(key)) systemProperty key, project.property(key)
+    }
     testLogging { events 'passed', 'skipped', 'failed'; showStandardStreams = true }
     // Live tests must execute when requested, even if the environment alone changed.
     if (System.getenv('RUN_SNOWFLAKE_IT') == 'true') outputs.upToDateWhen { false }
@@ -56,7 +60,7 @@ tasks.register('offlineTest', Test) {
     group = 'verification'
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
-    exclude '**/EadLgdSnowflakeIntegrationTest*', '**/EadLgdSnowflakeSingleRunTest*'
+    exclude '**/EadLgdSnowflakeIntegrationTest*', '**/EadLgdSnowflakeSingleRunTest*', '**/QueryProfileGraphmlExportTest*'
     environment 'RUN_SNOWFLAKE_IT', 'false'
 }
 tasks.register('generateFixtures', JavaExec) {
