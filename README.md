@@ -10,6 +10,54 @@ runs the job twice over the same loaded inputs and compares the outputs.
 **This is an invented educational EUR model, not a validated regulatory,
 accounting or production credit-risk implementation.**
 
+## Checkpoints and the final Query Profile
+
+A Snowflake Query Profile shows the operators executed by a query, how rows flow
+between them, and where execution time is spent. This demo captures profiles for
+three checkpoints (**CP1, CP2 and CP3**) and the final **CTAS** (Create Table As
+Select). All five input datasets are loaded before CP1 starts.
+
+Each checkpoint calls native Snowpark `DataFrame.cacheResult()` to materialize
+its result in Snowflake. The next stage reads that cached result, giving the job
+explicit processing boundaries:
+
+| Stage | Work performed | Rows in the demonstrated run |
+| --- | --- | ---: |
+| **CP1 — account EAD** | Join accounts with customers and calculate exposure at default. | 300,000 accounts |
+| **CP2 — account collateral** | Read CP1 and add each account's allocated, discounted collateral value. | 300,000 accounts |
+| **CP3 — account LGD** | Read CP2, combine expected recoveries, cap recovery at EAD and calculate loss given default. | 300,000 accounts |
+| **FINAL_CTAS — customer output** | Read CP3, aggregate by customer, rank accounts, join customer attributes and write the final transient table. | 100,000 customers |
+
+Each checkpoint has its own materialization query ID and profile. With the pinned
+Snowpark version, that data query is the `INSERT ... SELECT` emitted by
+`cacheResult()`. The final CTAS has a fourth query ID; its profile shows the work
+performed after CP3. The earlier checkpoint calculations are visible in their
+respective profiles.
+
+### Final CTAS in Snowflake
+
+The screenshot below shows query `01c73375-0005-833e-0001-91ae00232802` on
+`SCALING_BENCH_WH` (X-Small). Select **Step 2** to see the connected graph: scans,
+window ranking, aggregation and joins feed the CTAS write of 100,000 rows.
+**Step 1** contains the table-creation operation. This query has 13 operators in
+total: one in Step 1 and twelve in Step 2. Follow the arrows upward from the scans
+to the write; displayed execution percentages apply to the selected step.
+
+[![Snowflake Query Profile showing Step 2 of the final CTAS, with scans, joins, aggregation and window ranking](images/QueryProfile.png)](images/QueryProfile.png)
+
+### The same profile in yEd
+
+The [ScalaTest GraphML exporter](#export-a-query-profile-to-yed-graphml-through-scalatest)
+turns the recorded operator statistics into an editable graph with full object
+names, row counts and execution percentages. The screenshot below shows the
+exported CTAS profile in yEd, with separate groups for the two execution steps.
+Open the [example GraphML file](docs/qp-demo.graphml) in yEd to explore it.
+
+[![The exported CTAS Query Profile in yEd, with full object names and connected operator nodes](images/yEd.png)](images/yEd.png)
+
+For tabular exports of the same profile, see the [SQL CSV export instructions](sql/README.md)
+for `nodes.csv` and `relationships.csv`.
+
 ## Build and run locally
 
 Install JDK 17. The wrapper downloads Gradle; no Scala, Hadoop, Spark, Python or
