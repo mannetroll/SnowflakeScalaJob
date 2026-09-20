@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environment
+.venv/
+
+# uv
+.uv/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+__cache__/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+*.parquet
+*.env
+*.log
+*.txt
+.claude/
+uv.lock
+
+# Credentials -- never commit these
+snowflake.properties
+secrets/
+*.p8
+*.pem
+*.key
