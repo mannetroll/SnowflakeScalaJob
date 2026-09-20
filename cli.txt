@@ -1,0 +1,60 @@
+# Codex Task — Build a Snowflake EAD/LGD Query-Profile Demo
+
+## Project context
+
+Create a BRAND-NEW standalone project from scratch in the current directory.
+Read first: codex_snowflake_ead_lgd_prompt.md
+
+There is no existing repository, source code, screenshots, reference project,
+shared test framework, build configuration, or application code available.
+
+Do not search for or depend on any pre-existing project.
+
+The finished project must be a self-contained IntelliJ-compatible Gradle +
+Scala + Snowpark application/test project demonstrating an invented EAD/LGD
+workload in Snowflake.
+
+Create all required project files yourself, including:
+
+- settings.gradle
+- build.gradle
+- Gradle wrapper
+- .gitignore
+- README.md
+- src/main/scala
+- src/test/scala
+- src/test/resources where appropriate
+- example Snowflake configuration
+- configuration/session management
+- deterministic synthetic Parquet generation
+- Snowflake staging/loading
+- Snowpark transformations
+- checkpoint/profile instrumentation
+- offline tests
+- live Snowflake integration test
+- SQL/profile inspection artifacts
+
+Use a project name such as:
+
+snowflake-ead-lgd-profile-demo
+
+## Primary goal
+
+Create a reproducible Snowflake/Snowpark Scala demonstration that:
+
+1. Generates approximately 100,000 synthetic customers.
+2. Generates five real Parquet input datasets.
+3. Uploads and loads all five datasets into Snowflake before transformation.
+4. Runs an invented EAD/LGD transformation using Snowpark Scala.
+5. Contains at least three meaningful native DataFrame.cacheResult()
+   checkpoints.
+6. Makes each checkpoint feed the next processing stage.
+7. Executes a genuine final CREATE TRANSIENT TABLE ... AS SELECT ... query.
+8. Captures the Snowflake query IDs for CP1, CP2, CP3 and FINAL_CTAS.
+9. Retrieves query operator statistics for those queries.
+10. Allows the user to open the corresponding Snowflake Query Profiles.
+11. Runs the complete scenario as a ScalaTest integration test.
+12. Can also run offline unit tests without connecting to Snowflake.
+
+The EAD/LGD model is an invented educational demonstration. It must not be
+presented as a regulatory or production credit-risk implementation.

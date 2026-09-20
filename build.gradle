@@ -1,0 +1,74 @@
+plugins {
+    id 'scala'
+    id 'application'
+    id 'idea'
+}
+
+group = 'eadlgddemo'
+version = '1.0.0'
+
+repositories { mavenCentral() }
+java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.12.20'
+    implementation 'com.snowflake:snowpark_2.12:1.21.0'
+    implementation 'net.snowflake:snowflake-jdbc:3.24.2'
+    implementation 'org.apache.parquet:parquet-avro:1.15.2'
+    implementation 'org.apache.avro:avro:1.12.0'
+    // Parquet's public JVM signatures reference Hadoop classes. Local I/O uses NIO,
+    // never Hadoop FileSystem, so no Hadoop installation or winutils is needed.
+    implementation('org.apache.hadoop:hadoop-common:3.4.1') {
+        exclude group: 'org.slf4j', module: 'slf4j-reload4j'
+        exclude group: 'ch.qos.reload4j', module: 'reload4j'
+    }
+    implementation('org.apache.hadoop:hadoop-mapreduce-client-core:3.4.1') {
+        exclude group: 'org.slf4j', module: 'slf4j-reload4j'
+        exclude group: 'ch.qos.reload4j', module: 'reload4j'
+    }
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.0'
+    implementation 'com.fasterxml.jackson.module:jackson-module-scala_2.12:2.18.0'
+    testImplementation 'org.scalatest:scalatest_2.12:3.2.19'
+    testImplementation 'org.scalatestplus:junit-4-13_2.12:3.2.19.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+def arrowJvmArgs = ['--add-opens=java.base/java.nio=ALL-UNNAMED']
+application {
+    mainClass = 'eadlgddemo.Main'
+    applicationDefaultJvmArgs = arrowJvmArgs
+}
+tasks.withType(ScalaCompile).configureEach {
+    scalaCompileOptions.additionalParameters = ['-release:17', '-deprecation', '-feature', '-unchecked', '-Xlint']
+}
+tasks.withType(Test).configureEach {
+    useJUnit()
+    maxParallelForks = 1
+    maxHeapSize = '2g'
+    jvmArgs arrowJvmArgs
+    systemProperty 'org.slf4j.simpleLogger.defaultLogLevel', 'warn'
+    testLogging { events 'passed', 'skipped', 'failed'; showStandardStreams = true }
+    // Live tests must execute when requested, even if the environment alone changed.
+    if (System.getenv('RUN_SNOWFLAKE_IT') == 'true') outputs.upToDateWhen { false }
+}
+tasks.register('offlineTest', Test) {
+    description = 'Runs only local tests; never connects to Snowflake.'
+    group = 'verification'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    exclude '**/EadLgdSnowflakeIntegrationTest*'
+    environment 'RUN_SNOWFLAKE_IT', 'false'
+}
+tasks.register('generateFixtures', JavaExec) {
+    description = 'Generates all five real Parquet files locally, without Snowflake.'
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'eadlgddemo.Main'
+    args 'generate'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(17) }
+}
+tasks.named('wrapper') {
+    gradleVersion = '8.14.3'
+    distributionType = Wrapper.DistributionType.BIN
+    distributionSha256Sum = 'bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531'
+}
