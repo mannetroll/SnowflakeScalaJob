@@ -25,9 +25,26 @@ final case class PhaseEvidence(execution: String, phase: String, tag: String,
     statements: Vector[Map[String, Any]], expectedBusinessRows: Long, businessRows: Option[Long],
     profiles: Vector[Map[String, Any]])
 
+object QueryProfiler {
+  val RequiredPhases: Vector[String] = Vector("CP1_ACCOUNT_EAD", "CP2_ACCOUNT_COLLATERAL", "CP3_ACCOUNT_LGD", "FINAL_CTAS")
+
+  private[eadlgddemo] def completeProfiles(evidence: Seq[PhaseEvidence], executions: Set[String]): Boolean = {
+    val expected = for (execution <- executions; phase <- RequiredPhases) yield (execution, phase)
+    val observed = evidence.map(e => (e.execution, e.phase))
+    executions.nonEmpty && observed.size == expected.size && observed.toSet == expected && evidence.forall { e =>
+      e.materializedObjects.nonEmpty && e.businessRows.contains(e.expectedBusinessRows) &&
+        e.dataQueryIds.nonEmpty && e.dataQueryIds.distinct.size == e.dataQueryIds.size &&
+        e.profiles.size == e.dataQueryIds.size &&
+        e.profiles.flatMap(_.get("queryId")).toSet == e.dataQueryIds.toSet &&
+        e.profiles.forall(_.get("verified").contains(true))
+    }
+  }
+}
+
 /** A dedicated single-threaded session is mandatory. No LAST_QUERY_ID guesses. */
 final class QueryProfiler(session: Session, connection: ConnectionConfig, runId: String,
-    dir: Path, registry: ObjectRegistry) {
+    dir: Path, registry: ObjectRegistry, expectedExecutions: Set[String]) {
+  require(expectedExecutions.nonEmpty, "At least one profiled execution is required")
   private val evidence = ArrayBuffer.empty[PhaseEvidence]
   private var execution = "SETUP"
   private val sessionId = {
@@ -151,8 +168,7 @@ final class QueryProfiler(session: Session, connection: ConnectionConfig, runId:
     Json.write(path, result)
     result - "operators"
   }
-  def profilesVerified: Boolean = evidence.size == 8 && evidence.forall(e =>
-    e.dataQueryIds.nonEmpty && e.profiles.size == e.dataQueryIds.size && e.profiles.forall(_("verified") == true))
+  def profilesVerified: Boolean = QueryProfiler.completeProfiles(evidence.toVector, expectedExecutions)
   def enforceProfiles(required: Boolean): Unit = if (required && !profilesVerified) {
     val reasons = evidence.flatMap(_.profiles).filter(_("verified") != true).map(_("error")).mkString("; ")
     throw new IllegalStateException(s"Profiling acceptance failed: $reasons. See profiles/; correctness-only requires explicit REQUIRE_QUERY_PROFILES=false")
@@ -160,6 +176,7 @@ final class QueryProfiler(session: Session, connection: ConnectionConfig, runId:
   private def flush(): Unit = {
     Json.write(dir.resolve("query-manifest.json"), Map("runId" -> runId, "sessionId" -> sessionId,
       "allFiveLoadsValidatedAtServerTime" -> loadBoundary.orNull, "profilesVerified" -> profilesVerified,
+      "expectedExecutions" -> expectedExecutions.toVector.sorted,
       "phases" -> evidence.toVector))
     val statements = evidence.flatMap(e => e.dataQueryIds.map(id =>
         s"-- ${e.execution} ${e.phase}; materialized ${e.materializedObjects.mkString(", ")}; verified business rows ${e.businessRows.map(_.toString).getOrElse("unverified")}\n" +

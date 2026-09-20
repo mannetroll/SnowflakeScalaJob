@@ -11,7 +11,7 @@ final class EadLgdSnowflakeIntegrationTest extends AnyFunSuite {
     // after opt-in is a failure, never a cancellation.
     if (!DemoConfig.liveEnabled()) cancel("Live Snowflake test skipped: set RUN_SNOWFLAKE_IT=true to opt in")
     val config = DemoConfig.fromEnv()
-    val result = DemoRunner.run(config, ConnectionConfig.load())
+    val result = DemoRunner.run(config, ConnectionConfig.load(), verifyDeterminism = true)
     assert(result.outputs.distinct.size == 2)
     assert(java.nio.file.Files.isRegularFile(result.directory.resolve("query-manifest.json")))
     if (config.requireQueryProfiles) assert(result.profilesVerified)

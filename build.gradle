@@ -56,7 +56,7 @@ tasks.register('offlineTest', Test) {
     group = 'verification'
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
-    exclude '**/EadLgdSnowflakeIntegrationTest*'
+    exclude '**/EadLgdSnowflakeIntegrationTest*', '**/EadLgdSnowflakeSingleRunTest*'
     environment 'RUN_SNOWFLAKE_IT', 'false'
 }
 tasks.register('generateFixtures', JavaExec) {

@@ -23,12 +23,15 @@ object ReferenceCohort {
 }
 
 final class ResultValidator(session: Session, connection: ConnectionConfig, profiler: QueryProfiler,
-    registry: ObjectRegistry, runId: String, dir: Path) {
+    registry: ObjectRegistry, runId: String, dir: Path, expectedExecutions: Set[String]) {
   private val checks = ArrayBuffer.empty[Map[String, Any]]
+  private var validatedExecutions = Set.empty[String]
   private var correctnessComplete = false
   private var deterministic = false
   private def persist(): Unit = Json.write(dir.resolve("validation-summary.json"), Map(
     "correctnessVerified" -> correctnessComplete, "determinismVerified" -> deterministic,
+    "expectedExecutions" -> expectedExecutions.toVector.sorted,
+    "validatedExecutions" -> validatedExecutions.toVector.sorted,
     "checks" -> checks.toVector))
   private def check(label: String, actual: BigDecimal, expected: BigDecimal = 0): Unit = {
     checks += Map("check" -> label, "actual" -> actual, "expected" -> expected, "passed" -> (actual == expected))
@@ -43,6 +46,7 @@ final class ResultValidator(session: Session, connection: ConnectionConfig, prof
     name
   }
   def validate(result: JobResult, inputs: LoadedInputs, config: DemoConfig): Unit = {
+    require(expectedExecutions(result.execution), "Unexpected job execution for validation")
     profiler.useExecution(result.execution)
     profiler.phase("VALIDATION")
     val accountCount = config.customerCount.toLong * 3
@@ -108,8 +112,13 @@ final class ResultValidator(session: Session, connection: ConnectionConfig, prof
     check("hand-calculated account cohort", if (observedAccounts == ReferenceCohort.accounts) 0 else 1)
     val observedCustomers = session.sql(s"SELECT CUSTOMER_ID,TOTAL_EAD,CAPPED_RECOVERY,LGD_AMOUNT,ILLUSTRATIVE_EXPECTED_LOSS,HIGHEST_EAD_ACCOUNT_ID FROM $out WHERE CUSTOMER_ID<=4 ORDER BY CUSTOMER_ID").collect().toVector.map(r => (0 until 6).map(i => Sql.number(r.get(i))).toVector)
     check("hand-calculated customer cohort", if (observedCustomers == ReferenceCohort.customers) 0 else 1)
+    validatedExecutions += result.execution
+    correctnessComplete = validatedExecutions == expectedExecutions
+    persist()
   }
   def compare(first: JobResult, second: JobResult): Unit = {
+    require(correctnessComplete && validatedExecutions(first.execution) && validatedExecutions(second.execution),
+      "Validate both independent job executions before comparing them")
     profiler.useExecution("COMPARISON")
     profiler.phase("VALIDATION")
     require(first.finalTable != second.finalTable && (first.cp1 ne second.cp1))

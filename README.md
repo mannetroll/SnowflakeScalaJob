@@ -3,8 +3,9 @@
 A standalone Gradle/Scala/Snowpark project that generates five real Parquet inputs,
 loads them into Snowflake, runs three native `DataFrame.cacheResult()` checkpoints,
 and executes a customer-level `CREATE TRANSIENT TABLE ... AS SELECT`. The live
-ScalaTest suite runs the job twice over the same loaded inputs and verifies
-correctness, determinism and actual operator-profile evidence.
+single-run ScalaTest executes exactly three checkpoints and one final CTAS, with
+correctness and actual operator-profile evidence. A separate determinism suite
+runs the job twice over the same loaded inputs and compares the outputs.
 
 **This is an invented educational EUR model, not a validated regulatory,
 accounting or production credit-risk implementation.**
@@ -20,7 +21,7 @@ distribution access. Later builds can use Gradle's dependency cache.
 export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 ./gradlew offlineTest
 ./gradlew test
-# test also discovers and explicitly skips the gated live test.
+# test also discovers and explicitly skips the gated live tests.
 ./gradlew generateFixtures                  # 100,000 customers; no Snowflake
 CUSTOMER_COUNT=100 ./gradlew generateFixtures
 ./gradlew installDist                       # application scripts + jars
@@ -37,7 +38,7 @@ Remove-Item Env:CUSTOMER_COUNT
 .\gradlew.bat installDist
 ```
 
-`offlineTest` excludes the live suite and forces the gate off. `test` discovers
+`offlineTest` excludes both live suites and forces the gate off. `test` discovers
 ScalaTest suites through `@RunWith(JUnitRunner)` and Gradle `useJUnit()`. With no
 `RUN_SNOWFLAKE_IT=true`, integration cancels before reading connection settings or
 opening a session. After opt-in, missing settings, authentication failures and
@@ -46,7 +47,9 @@ Reports are under `build/reports/tests/test/` or `offlineTest/`.
 
 The installed application is in
 `build/install/snowflake-ead-lgd-profile-demo/bin/`; pass `generate` for local files,
-or `run` for the gated live scenario. `./gradlew run --args=run` is equivalent.
+or `run` for one complete gated execution: three checkpoints and one final CTAS.
+`./gradlew run --args=run` is equivalent. To execute this through ScalaTest, use
+`EadLgdSnowflakeSingleRunTest` as shown below.
 
 ## Pinned version matrix
 
@@ -85,7 +88,8 @@ and [DataFrame APIs](https://docs.snowflake.com/en/developer-guide/snowpark/scal
 
 Use an existing warehouse and explicitly supplied sandbox database/schema. The
 application creates no warehouse, database, schema, role or grant and never resizes
-a warehouse. A modest existing warehouse is appropriate.
+a warehouse. Use an existing **X-Small** warehouse for this run. The connection
+setting takes its warehouse name, not the string `X-Small`.
 
 Copy `snowflake.example.properties` to ignored `snowflake.properties`, or use
 environment variables. `SNOWFLAKE_CONFIG` selects another local file. Environment
@@ -127,46 +131,74 @@ TABLE, CREATE VIEW and CREATE STAGE on the schema. It operates on its own object
 Operator evidence also requires **MONITOR or OPERATE on the warehouse**. No
 ACCOUNTADMIN role or automatic grants are requested.
 
-## Live acceptance and smoke commands
+## Complete job through ScalaTest: three checkpoints and one CTAS
+
+The configured environment for this workspace is role `SYSADMIN`, existing
+X-Small warehouse `SCALING_BENCH_WH`, database `RISKDEMO` and schema
+`EAD_LGD_DEMO`. The database/schema were provisioned separately using
+[the setup worksheet](sql/setup-riskdemo.sql); their creation is not part of the
+business job. The ignored local `snowflake.properties` contains this context.
 
 Set connection/authentication first. For the existing local key configuration,
-supply the missing sandbox context, for example:
+supply the sandbox context if it is not already in your local properties file:
 
 ```bash
-export SNOWFLAKE_ROLE=DEMO_ROLE
-export SNOWFLAKE_WAREHOUSE=EXISTING_SMALL_WAREHOUSE
-export SNOWFLAKE_DATABASE=SANDBOX_DB
+export SNOWFLAKE_ROLE=SYSADMIN
+export SNOWFLAKE_WAREHOUSE=SCALING_BENCH_WH
+export SNOWFLAKE_DATABASE=RISKDEMO
 export SNOWFLAKE_SCHEMA=EAD_LGD_DEMO
 
 RUN_SNOWFLAKE_IT=true CUSTOMER_COUNT=100000 KEEP_OBJECTS=true \
 REQUIRE_QUERY_PROFILES=true \
-./gradlew test --tests '*EadLgdSnowflakeIntegrationTest' --rerun-tasks --info
+./gradlew test --tests '*EadLgdSnowflakeSingleRunTest' --rerun-tasks --info
 
 # Smaller live smoke run; not default-scale acceptance.
 RUN_SNOWFLAKE_IT=true CUSTOMER_COUNT=100 KEEP_OBJECTS=false \
-./gradlew test --tests '*EadLgdSnowflakeIntegrationTest' --rerun-tasks
+./gradlew test --tests '*EadLgdSnowflakeSingleRunTest' --rerun-tasks
 ```
 
 ```powershell
-$env:SNOWFLAKE_ROLE = 'DEMO_ROLE'
-$env:SNOWFLAKE_WAREHOUSE = 'EXISTING_SMALL_WAREHOUSE'
-$env:SNOWFLAKE_DATABASE = 'SANDBOX_DB'
+$env:SNOWFLAKE_ROLE = 'SYSADMIN'
+$env:SNOWFLAKE_WAREHOUSE = 'SCALING_BENCH_WH'
+$env:SNOWFLAKE_DATABASE = 'RISKDEMO'
 $env:SNOWFLAKE_SCHEMA = 'EAD_LGD_DEMO'
 $env:RUN_SNOWFLAKE_IT = 'true'
 $env:CUSTOMER_COUNT = '100000'
 $env:KEEP_OBJECTS = 'true'
 $env:REQUIRE_QUERY_PROFILES = 'true'
-.\gradlew.bat test --tests '*EadLgdSnowflakeIntegrationTest' --rerun-tasks --info
+.\gradlew.bat test --tests '*EadLgdSnowflakeSingleRunTest' --rerun-tasks --info
 
 # Smaller live smoke run:
 $env:CUSTOMER_COUNT = '100'
 $env:KEEP_OBJECTS = 'false'
-.\gradlew.bat test --tests '*EadLgdSnowflakeIntegrationTest' --rerun-tasks
+.\gradlew.bat test --tests '*EadLgdSnowflakeSingleRunTest' --rerun-tasks
 ```
 
-These commands start billable queries. Each run performs **two full job executions**
-plus ingestion, validation and observability. Validation overhead is substantial;
-the integration test is not a pure performance benchmark.
+These commands start billable queries. Each single-run test generates and loads
+all five inputs, performs **one full job execution: CP1 → CP2 → CP3 → FINAL_CTAS**,
+and validates the result. It produces one final customer table. Ingestion,
+validation and observability issue additional SQL statements; the three
+checkpoints and one CTAS describe the business pipeline.
+
+For the original determinism acceptance, select the separate suite:
+
+```bash
+RUN_SNOWFLAKE_IT=true CUSTOMER_COUNT=100000 KEEP_OBJECTS=true \
+REQUIRE_QUERY_PROFILES=true \
+./gradlew test --tests '*EadLgdSnowflakeIntegrationTest' --rerun-tasks --info
+```
+
+On Windows, with the same environment variables set:
+
+```powershell
+.\gradlew.bat test --tests '*EadLgdSnowflakeIntegrationTest' --rerun-tasks --info
+```
+
+That suite executes the complete job twice (six checkpoints and two final CTAS
+statements in total) and compares both outputs. With the live gate enabled,
+unfiltered `test` runs both live suites. Use the exact single-run filter above for
+one execution. Validation overhead is substantial; these are not pure performance
+benchmarks.
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
@@ -174,7 +206,7 @@ the integration test is not a pure performance benchmark.
 | `CUSTOMER_COUNT` | `100000` | 10–1,000,000; exactly 3 accounts each |
 | `DATA_SEED` | `20251130` | signed 64-bit seed |
 | `REPORTING_DATE` | `2025-11-30` | ISO date |
-| `KEEP_OBJECTS` | `false` | retain both final transient outputs only |
+| `KEEP_OBJECTS` | `false` | retain the final transient output(s) only |
 | `REQUIRE_QUERY_PROFILES` | `true` | missing profile evidence fails acceptance |
 | `COLLATERAL_DISCOUNT_BPS` | `500` | annual asset rate, 0–10,000 |
 | `STATEMENT_TIMEOUT_SECONDS` | `1800` | 60–86,400, dedicated session |
@@ -263,9 +295,9 @@ input/*.parquet
 fixture-manifest.json
 load-results.json
 query-manifest.json
-profiles/E1-<phase>-<query-id>.json     # and E2
-sql/executed-ctas.sql                 # both actual CTAS statements
-sql/E1-executed-ctas.sql               # and E2
+profiles/E1-<phase>-<query-id>.json     # E2 also present in determinism suite
+sql/executed-ctas.sql                 # actual CTAS statement(s)
+sql/E1-executed-ctas.sql               # E2 also present in determinism suite
 sql/inspect-queries.sql               # actual query IDs; runnable
 sql/cleanup.sql                       # exact registered objects only
 validation-summary.json
@@ -278,12 +310,14 @@ recovery, LGD amount, EAD-weighted LGD, PD, illustrative expected loss, top acco
 and quality counts. There are no operational IDs/timestamps among business columns.
 Validation checks account grain at every checkpoint, bounded intermediates,
 allocation conservation, numerical limits, customer/account reconciliation, the
-hand-calculated cohort and bidirectional SQL MINUS between fresh executions.
+hand-calculated cohort. The determinism suite additionally checks bidirectional
+SQL MINUS between fresh executions.
 Counts and uniqueness are checked separately, so set comparisons cannot hide
 duplicates. Full outputs are never collected locally.
 
 Default cleanup drops all registered objects. `KEEP_OBJECTS=true` retains only the
-two final transient tables; run generated `sql/cleanup.sql` when finished.
+final transient table (two in the determinism suite); run generated
+`sql/cleanup.sql` when finished.
 Temporary checkpoints, inputs, views and stage end with the session and are also
 explicitly cleaned up where registered. Retaining final outputs cannot retain
 checkpoint data. Cleanup uses exact registered names and preserves the original

@@ -5,10 +5,11 @@ import scala.util.control.NonFatal
 
 final case class RunResult(runId: String, directory: Path, outputs: Vector[String], profilesVerified: Boolean)
 object DemoRunner {
-  def run(config: DemoConfig, connection: ConnectionConfig): RunResult = {
+  def run(config: DemoConfig, connection: ConnectionConfig, verifyDeterminism: Boolean = false): RunResult = {
     require(DemoConfig.liveEnabled(), "A live run requires RUN_SNOWFLAKE_IT=true")
     val runId = DemoConfig.runId()
     val dir = DemoConfig.directory(runId)
+    val executions = if (verifyDeterminism) Vector("E1", "E2") else Vector("E1")
     var summary = s"Run $runId started. Live correctness and profiles have not yet been verified.\n"
     Json.writeText(dir.resolve("run-summary.md"), summary)
     try {
@@ -17,26 +18,31 @@ object DemoRunner {
       Lifecycle.protecting {
         val registry = new ObjectRegistry(session, dir, config.keepObjects)
         Lifecycle.protecting {
-          val profiler = new QueryProfiler(session, connection, runId, dir, registry)
+          val profiler = new QueryProfiler(session, connection, runId, dir, registry, executions.toSet)
           val inputs = new InputLoader(session, connection, profiler, registry, runId, dir).load(manifest)
           val job = new EadLgdJob(session, connection, profiler, registry, dir)
-          val validator = new ResultValidator(session, connection, profiler, registry, runId, dir)
-          val first = job.run(JobInput(inputs, config, runId, "E1"))
-          validator.validate(first, inputs, config)
-          val second = job.run(JobInput(inputs, config, runId, "E2"))
-          validator.validate(second, inputs, config)
-          validator.compare(first, second)
+          val validator = new ResultValidator(session, connection, profiler, registry, runId, dir, executions.toSet)
+          val results = executions.map { execution =>
+            val result = job.run(JobInput(inputs, config, runId, execution))
+            validator.validate(result, inputs, config)
+            result
+          }
+          if (verifyDeterminism) validator.compare(results(0), results(1))
+          val outputs = results.map(_.finalTable)
+          val validationStatus = if (verifyDeterminism)
+            "Two independent executions: correctness and bidirectional determinism checks passed."
+          else "One complete execution: three checkpoints, one final CTAS, correctness checks passed. Determinism comparison not requested."
           val lines = profiler.phases.map(p => s"${p.execution} ${p.phase}: ${p.dataQueryIds.mkString(", ")} (${p.businessRows.map(_.toString).getOrElse("unverified")} business rows)")
           summary = s"""Educational EAD/LGD demo — $runId
 
 Customers: ${config.customerCount}; accounts: ${config.customerCount.toLong * 3}; seed: ${config.seed}; date: ${config.reportingDate}.
 All five Parquet inputs uploaded, loaded and validated before CP1: ${inputs.completedAtServerTime}.
-Two independent executions: correctness and bidirectional determinism checks passed.
+$validationStatus
 Profiles verified: ${profiler.profilesVerified}. Required: ${config.requireQueryProfiles}.
 
 ${lines.mkString("\n")}
 
-Final outputs: ${first.finalTable}, ${second.finalTable}
+Final outputs: ${outputs.mkString(", ")}
 KEEP_OBJECTS=${config.keepObjects}: ${if (config.keepObjects) "final outputs retained" else "final outputs removed during cleanup"}.
 Temporary checkpoints end with this session. Cleanup SQL: sql/cleanup.sql.
 Artifacts: ${dir.toAbsolutePath}
@@ -46,10 +52,12 @@ Each profile describes one query; upstream checkpoint work has separate profiles
 """
           Json.writeText(dir.resolve("run-summary.md"), summary)
           lines.foreach(println)
-          println(s"Final output: ${first.finalTable}\nDeterminism output: ${second.finalTable}\nArtifacts: ${dir.toAbsolutePath}")
+          println(s"Final output: ${outputs.head}")
+          outputs.drop(1).foreach(table => println(s"Determinism output: $table"))
+          println(s"Artifacts: ${dir.toAbsolutePath}")
           profiler.enforceProfiles(config.requireQueryProfiles)
           session.setQueryTag(profiler.tag("CLEANUP"))
-          RunResult(runId, dir, Vector(first.finalTable, second.finalTable), profiler.profilesVerified)
+          RunResult(runId, dir, outputs, profiler.profilesVerified)
         } {
           Lifecycle.protecting {
             session.setQueryTag(s"""{"job":"eadlgddemo","run":"$runId","execution":"CLEANUP","phase":"CLEANUP"}""")
