@@ -69,9 +69,8 @@ The three temporary checkpoint caches are diagnostic snapshots.
 Run the single-run command above with `KEEP_OBJECTS=true` to retain all six
 tables after the session ends. The determinism suite retains seven tables:
 five shared inputs and two outputs. With `KEEP_OBJECTS=false`, cleanup removes
-all demo tables. The generated `sql/cleanup.sql` drops exact demo objects.
-Run that cleanup before starting another retained execution with the same fixed
-table names.
+all demo tables. Run [drop-demo-tables.sql](sql/drop-demo-tables.sql) as
+`EAD_ROLE` before another retained execution with the same fixed table names.
 
 Each run writes `E1-expected-table-lineage.json` and
 `E1-expected-table-lineage.graphml` with six table nodes and five
@@ -225,9 +224,51 @@ TLS and OCSP checks remain enabled. See
 `EAD_ROLE` runs the job and owns the Streamlit app. It needs USAGE on the
 warehouse, demo database and schema, plus CREATE TABLE, CREATE VIEW and CREATE
 STAGE on the demo schema. Operator evidence requires MONITOR on the warehouse.
-[Role setup](sql/setup-ead-role.sql) is a one-time administrator action;
-[demo setup](sql/setup-riskdemo.sql) grants access again after each database
-drop and recreation. The job itself does not run as ACCOUNTADMIN or SYSADMIN.
+[Role setup](sql/setup-ead-role.sql) grants warehouse access and creates the
+app database and `CTAS_RUNS` table once. The job inserts final CTAS query IDs
+there, and the app shows the five latest IDs while reading each profile directly
+with `GET_QUERY_OPERATOR_STATS`. Run [demo setup](sql/setup-riskdemo.sql) again
+after each demo database drop. `SYSADMIN` creates the database containers; the
+job and app run as `EAD_ROLE`.
+
+To rerun without dropping the database, explicitly run
+[drop-demo-tables.sql](sql/drop-demo-tables.sql) as `EAD_ROLE`, then run the job
+again. The script drops only this project's named demo tables. The app and its
+saved CTAS query IDs remain in `EAD_LINEAGE`.
+
+### Normal run order
+
+Run the setup once for a fresh environment. The first script uses
+`ACCOUNTADMIN` for the role and warehouse grant, then `SYSADMIN` for the stable
+app database. The second script creates the demo database and schema as
+`SYSADMIN`:
+
+```bash
+.venv/bin/snow sql -c snowflake_scala_job --role ACCOUNTADMIN --secondary-roles NONE \
+  --database EAD_LINEAGE --schema PUBLIC -f sql/setup-ead-role.sql
+.venv/bin/snow sql -c snowflake_scala_job --role SYSADMIN --secondary-roles NONE \
+  --database EAD_LINEAGE --schema PUBLIC -f sql/setup-riskdemo.sql
+```
+
+For each retained rerun, explicitly drop the named demo tables as `EAD_ROLE`,
+then run the job as `EAD_ROLE`:
+
+```bash
+.venv/bin/snow sql -c snowflake_scala_job --role EAD_ROLE --secondary-roles NONE \
+  --database RISKDEMO --schema EAD_LGD_DEMO -f sql/drop-demo-tables.sql
+RUN_SNOWFLAKE_IT=true CUSTOMER_COUNT=100000 KEEP_OBJECTS=true \
+REQUIRE_QUERY_PROFILES=true SNOWFLAKE_ROLE=EAD_ROLE \
+./gradlew clean test --tests '*EadLgdSnowflakeSingleRunTest' --rerun-tasks
+```
+
+Deploy the app as `EAD_ROLE` after app code changes. Its warehouse-runtime
+configuration is in `snowflake.yml`; a demo rerun does not require redeployment.
+
+```bash
+.venv/bin/snow streamlit deploy ead_lineage --replace \
+  -c snowflake_scala_job --role EAD_ROLE --secondary-roles NONE \
+  --database EAD_LINEAGE --schema PUBLIC
+```
 
 ## Complete job through ScalaTest: three checkpoints and one CTAS
 
@@ -318,7 +359,7 @@ values. Demo objects use fixed names in the configured schema. The first four cu
 fixed, independently calculable cohort. See [schemas and keys](docs/input-schema.md)
 and [model, rounding and reference cohort](docs/model.md).
 
-Five files are generated under `build/ead-lgd/DEMO/input/`. Their manifest
+Five files are generated under `build/ead-lgd/YYYYMMDD_HHMMSS/input/`. Their manifest
 records schemas, nullability, row counts, sizes and SHA-256 hashes. Every file is
 uploaded into the temporary internal stage, then loaded into explicit NOT
 NULL transient landing tables. COPY uses exact filenames, case-sensitive column matching
@@ -493,7 +534,7 @@ and [GET](https://docs.snowflake.com/en/sql-reference/sql/get) documentation.
 
 ## Artifacts and lifecycle
 
-Live run artifacts under `build/ead-lgd/DEMO/`:
+Live run artifacts under `build/ead-lgd/YYYYMMDD_HHMMSS/`:
 
 ```text
 input/*.parquet

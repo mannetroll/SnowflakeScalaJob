@@ -3,17 +3,27 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-from lineage_app.lineage_model import fetch_profile, parse_query_id, table_lineage
+from lineage_app.lineage_model import fetch_profile, parse_query_id, recent_ctas, table_lineage
 from lineage_app.lineage_view import graph_html
+from snowflake.snowpark.context import get_active_session
 
 st.set_page_config(layout="wide")
 st.title("CTAS table lineage")
 st.caption("A Snowflake query-profile view of source tables, output table, and joins. Works on Standard Edition.")
+session = get_active_session()
+if "query_id" not in st.session_state:
+    st.session_state["query_id"] = ""
 
 with st.sidebar:
     st.header("Final CTAS profile")
-    query_id = st.text_input("Query ID", placeholder="Final CTAS query ID from the latest run")
-    load = st.button("Load profile", type="primary")
+    st.subheader("Latest 5 CTAS")
+    selected = False
+    for run in recent_ctas(session):
+        if st.button(f"{run['RUN_ID']} · {run['QUERY_ID']}", key=run["QUERY_ID"]):
+            st.session_state["query_id"] = run["QUERY_ID"]
+            selected = True
+    query_id = st.text_input("Query ID", key="query_id", placeholder="Final CTAS query ID from the latest run")
+    load = st.button("Load profile", type="primary") or selected
     st.caption("Completed query profiles are available for 14 days.")
     st.divider()
     st.info("Table sources come from TableScan operators. Source-to-output arrows are inferred; native GET_LINEAGE is not used.")
@@ -24,9 +34,7 @@ if not query_id.strip():
 
 if load:
     try:
-        from snowflake.snowpark.context import get_active_session
-
-        st.session_state["profile"] = fetch_profile(get_active_session(), query_id)
+        st.session_state["profile"] = fetch_profile(session, query_id)
     except Exception as exc:
         st.error(f"Could not load the query profile: {exc}")
         st.stop()

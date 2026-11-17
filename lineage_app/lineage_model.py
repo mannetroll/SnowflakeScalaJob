@@ -29,6 +29,15 @@ def fetch_profile(session, query_id):
     return {"queryId": query_id, "operators": [row.as_dict() for row in rows]}
 
 
+def recent_ctas(session):
+    rows = session.sql(
+        "SELECT QUERY_ID, RUN_ID "
+        "FROM EAD_LINEAGE.PUBLIC.CTAS_RUNS "
+        "ORDER BY STARTED_AT DESC, QUERY_ID DESC LIMIT 5"
+    ).collect()
+    return [row.as_dict() for row in rows]
+
+
 def variant(value):
     if value is None:
         return None

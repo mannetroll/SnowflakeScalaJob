@@ -1,7 +1,8 @@
 package eadlgddemo
 
 import java.nio.file.{Files, Path, Paths}
-import java.time.LocalDate
+import java.time.{LocalDate, LocalDateTime}
+import java.time.format.DateTimeFormatter
 import com.snowflake.snowpark.Session
 import scala.collection.JavaConverters._
 
@@ -32,8 +33,11 @@ object DemoConfig {
     bool(env, "KEEP_OBJECTS", false), bool(env, "REQUIRE_QUERY_PROFILES", true),
     env.getOrElse("COLLATERAL_DISCOUNT_BPS", "500").toInt,
     env.getOrElse("STATEMENT_TIMEOUT_SECONDS", "1800").toInt)
-  def runId(): String = "DEMO"
-  def directory(runId: String): Path = Paths.get("build", "ead-lgd", Sql.identifier(runId))
+  def runId(): String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))
+  def directory(runId: String): Path = {
+    require(runId.matches("[0-9]{8}_[0-9]{6}"), "Run ID must be YYYYMMDD_HHMMSS")
+    Paths.get("build", "ead-lgd", runId)
+  }
 }
 
 // Deliberately not a case class: default toString must never expose passwords.

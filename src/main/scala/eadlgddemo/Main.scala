@@ -59,6 +59,11 @@ Profile-derived six-table graph: E1-profile-table-lineage.graphml.
           outputs.drop(1).foreach(table => println(s"Determinism output: $table"))
           println(s"Artifacts: ${dir.toAbsolutePath}")
           profiler.enforceProfiles(config.requireQueryProfiles)
+          profiler.phases.filter(_.phase == "FINAL_CTAS").foreach { phase =>
+            phase.dataQueryIds.foreach { queryId =>
+              session.sql(s"INSERT INTO EAD_LINEAGE.PUBLIC.CTAS_RUNS (QUERY_ID, RUN_ID) VALUES (${Sql.literal(queryId)}, ${Sql.literal(runId)})").collect()
+            }
+          }
           session.setQueryTag(profiler.tag("CLEANUP"))
           RunResult(runId, dir, outputs, profiler.profilesVerified)
         } {
