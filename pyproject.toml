@@ -17,5 +17,12 @@ dependencies = [
     "snowflake-connector-python>=4.7.1,<5",
 ]
 
+[dependency-groups]
+dev = [
+    "streamlit==1.53.0",
+    "snowflake-snowpark-python==1.53.0",
+    "watchdog>=6,<7",
+]
+
 [tool.hatch.build.targets.wheel]
 include = ["connect"]

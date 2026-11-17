@@ -15,3 +15,20 @@ From the repository root, deploy with:
 ```
 
 The deployment settings are in `snowflake.yml`. `SYSADMIN` creates `EAD_LINEAGE.PUBLIC.CTAS_RUNS` once through `sql/setup-ead-role.sql`. The job writes only query IDs there; the app reads the profile directly from Snowflake.
+
+## Local preview on macOS
+
+The app uses `st.connection("snowflake").session()` both locally and in its
+Snowflake warehouse runtime. On this Mac, `.streamlit/secrets.toml` selects the
+existing `snowflake_scala_job` key-pair connection with `role = "EAD_ROLE"`.
+The file is ignored by Git; `.streamlit/secrets.example.toml` documents its
+contents. From the repository root:
+
+```bash
+uv sync
+.venv/bin/streamlit run streamlit_app.py
+```
+
+Open `http://localhost:8501`. The UI runs locally; queries still execute in
+Snowflake on `SCALING_BENCH_WH`. The deployed app remains on
+`SYSTEM$WAREHOUSE_RUNTIME`.

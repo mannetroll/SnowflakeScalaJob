@@ -5,12 +5,11 @@ import streamlit.components.v1 as components
 
 from lineage_app.lineage_model import fetch_profile, parse_query_id, recent_ctas, table_lineage
 from lineage_app.lineage_view import graph_html
-from snowflake.snowpark.context import get_active_session
 
 st.set_page_config(layout="wide")
 st.title("CTAS table lineage")
 st.caption("A Snowflake query-profile view of source tables, output table, and joins. Works on Standard Edition.")
-session = get_active_session()
+session = st.connection("snowflake").session()
 if "query_id" not in st.session_state:
     st.session_state["query_id"] = ""
 

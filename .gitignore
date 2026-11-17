@@ -24,6 +24,7 @@ secrets/
 # Python helper environments and generated files
 .venv/
 uv.lock
+.streamlit/secrets.toml
 __pycache__/
 *.py[cod]
 *.egg-info/
