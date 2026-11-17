@@ -18,15 +18,17 @@ The deployment settings are in `snowflake.yml`. `SYSADMIN` creates `EAD_LINEAGE.
 
 ## Local preview on macOS
 
-The app uses `st.connection("snowflake").session()` both locally and in its
-Snowflake warehouse runtime. On this Mac, `.streamlit/secrets.toml` selects the
-existing `snowflake_scala_job` key-pair connection with `role = "EAD_ROLE"`.
+`streamlitstart.sh` sets `EAD_LOCAL_DEV=1`, so the local app uses
+`st.connection("snowflake").session()`. In Snowflake's warehouse runtime the
+flag is absent and the app uses `get_active_session()`. On this Mac,
+`.streamlit/secrets.toml` selects the existing `snowflake_scala_job` key-pair
+connection with `role = "EAD_ROLE"`.
 The file is ignored by Git; `.streamlit/secrets.example.toml` documents its
 contents. From the repository root:
 
 ```bash
 uv sync
-.venv/bin/streamlit run streamlit_app.py
+./streamlitstart.sh
 ```
 
 Open `http://localhost:8501`. The UI runs locally; queries still execute in

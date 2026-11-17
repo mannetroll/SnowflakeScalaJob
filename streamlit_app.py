@@ -1,7 +1,10 @@
 """Snowflake Streamlit app for profile-derived CTAS table lineage."""
 
+import os
+
 import streamlit as st
 import streamlit.components.v1 as components
+from snowflake.snowpark.context import get_active_session
 
 from lineage_app.lineage_model import fetch_profile, parse_query_id, recent_ctas, table_lineage
 from lineage_app.lineage_view import graph_html
@@ -9,7 +12,10 @@ from lineage_app.lineage_view import graph_html
 st.set_page_config(layout="wide")
 st.title("CTAS table lineage")
 st.caption("A Snowflake query-profile view of source tables, output table, and joins. Works on Standard Edition.")
-session = st.connection("snowflake").session()
+if os.getenv("EAD_LOCAL_DEV") == "1":
+    session = st.connection("snowflake").session()
+else:
+    session = get_active_session()
 if "query_id" not in st.session_state:
     st.session_state["query_id"] = ""
 
