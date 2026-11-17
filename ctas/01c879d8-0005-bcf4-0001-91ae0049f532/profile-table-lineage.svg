@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2190" height="1210" viewBox="0 0 2190 1210" role="img" aria-label="Profile-derived table lineage for 01c879d8-0005-bcf4-0001-91ae0049f532">
+<defs>
+  <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+    <path d="M0 0 L11 5.5 L0 11 Z" fill="#6b9ee3"/>
+  </marker>
+</defs>
+<style>
+  text { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+  .title { fill:#20252d; font-size:44px; font-weight:700; }
+  .subtitle { fill:#65748b; font-size:22px; }
+  .section { fill:#263244; font-size:27px; font-weight:700; }
+  .table-name { fill:#243247; font-size:23px; font-weight:650; }
+  .schema { fill:#6c7c93; font-size:15px; }
+  .detail { fill:#4f6481; font-size:17px; }
+  .metric { fill:#23344d; font-size:24px; font-weight:650; }
+</style>
+<rect width="2190" height="1210" fill="#ffffff"/>
+<text x="62" y="78" class="title" >Table lineage</text>
+<text x="62" y="124" class="subtitle" >01c879d8-0005-bcf4-0001-91ae0049f532</text>
+<text x="62" y="168" class="subtitle" >Final CTAS · 5 source tables · 1 output table</text>
+<rect x="62" y="207" width="252" height="42" rx="12" fill="#e7f0ff" stroke="#9cbcf1"/>
+<text x="81" y="234" fill="#2764bd" font-size="17" font-weight="650">Profile-derived lineage</text>
+<text x="339" y="233" fill="#697992" font-size="17">TableScan sources feed the CTAS output</text>
+<rect x="58" y="276" width="1525" height="860" rx="21" fill="#fbfcfe" stroke="#dce3ec"/>
+<text x="122" y="323" fill="#637895" font-size="16" font-weight="700">SOURCE TABLES</text>
+<text x="1110" y="606" fill="#5f806f" font-size="16" font-weight="700">CTAS OUTPUT</text>
+<path d="M 547 400.0 C 815 400.0, 840 662, 1098 662" fill="none" stroke="#8aaddc" stroke-width="2.7" marker-end="url(#arrow)"/>
+<path d="M 547 545.0 C 815 545.0, 840 679, 1098 679" fill="none" stroke="#8aaddc" stroke-width="2.7" marker-end="url(#arrow)"/>
+<path d="M 547 690.0 C 815 690.0, 840 696, 1098 696" fill="none" stroke="#8aaddc" stroke-width="2.7" marker-end="url(#arrow)"/>
+<path d="M 547 835.0 C 815 835.0, 840 713, 1098 713" fill="none" stroke="#8aaddc" stroke-width="2.7" marker-end="url(#arrow)"/>
+<path d="M 547 980.0 C 815 980.0, 840 730, 1098 730" fill="none" stroke="#8aaddc" stroke-width="2.7" marker-end="url(#arrow)"/>
+<g><title>RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS · 4 TableScan operators</title>
+<rect x="122" y="350" width="425" height="100" rx="11" fill="#ffffff" stroke="#b8cde6" stroke-width="1.7"/>
+<rect x="122" y="350" width="7" height="100" rx="3.5" fill="#4287f7"/>
+<text x="147" y="389" class="table-name" >EAD_ACCOUNTS</text>
+<text x="147" y="418" class="schema" >RISKDEMO.EAD_LGD_DEMO</text>
+<text x="527" y="431" fill="#4e7cc1" font-size="15" text-anchor="end">4 scans</text>
+</g>
+<g><title>RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL · 2 TableScan operators</title>
+<rect x="122" y="495" width="425" height="100" rx="11" fill="#ffffff" stroke="#b8cde6" stroke-width="1.7"/>
+<rect x="122" y="495" width="7" height="100" rx="3.5" fill="#4287f7"/>
+<text x="147" y="534" class="table-name" >EAD_ACCOUNT_COLLATERAL</text>
+<text x="147" y="563" class="schema" >RISKDEMO.EAD_LGD_DEMO</text>
+<text x="527" y="576" fill="#4e7cc1" font-size="15" text-anchor="end">2 scans</text>
+</g>
+<g><title>RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS · 2 TableScan operators</title>
+<rect x="122" y="640" width="425" height="100" rx="11" fill="#ffffff" stroke="#b8cde6" stroke-width="1.7"/>
+<rect x="122" y="640" width="7" height="100" rx="3.5" fill="#4287f7"/>
+<text x="147" y="679" class="table-name" >EAD_COLLATERAL_ASSETS</text>
+<text x="147" y="708" class="schema" >RISKDEMO.EAD_LGD_DEMO</text>
+<text x="527" y="721" fill="#4e7cc1" font-size="15" text-anchor="end">2 scans</text>
+</g>
+<g><title>RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS · 5 TableScan operators</title>
+<rect x="122" y="785" width="425" height="100" rx="11" fill="#ffffff" stroke="#b8cde6" stroke-width="1.7"/>
+<rect x="122" y="785" width="7" height="100" rx="3.5" fill="#4287f7"/>
+<text x="147" y="824" class="table-name" >EAD_CUSTOMERS</text>
+<text x="147" y="853" class="schema" >RISKDEMO.EAD_LGD_DEMO</text>
+<text x="527" y="866" fill="#4e7cc1" font-size="15" text-anchor="end">5 scans</text>
+</g>
+<g><title>RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES · 2 TableScan operators</title>
+<rect x="122" y="930" width="425" height="100" rx="11" fill="#ffffff" stroke="#b8cde6" stroke-width="1.7"/>
+<rect x="122" y="930" width="7" height="100" rx="3.5" fill="#4287f7"/>
+<text x="147" y="969" class="table-name" >EAD_EXPECTED_RECOVERIES</text>
+<text x="147" y="998" class="schema" >RISKDEMO.EAD_LGD_DEMO</text>
+<text x="527" y="1011" fill="#4e7cc1" font-size="15" text-anchor="end">2 scans</text>
+</g>
+<g><title>RISKDEMO.EAD_LGD_DEMO.EAD_OUTPUT · 100,000 rows inserted</title>
+<rect x="1110" y="632" width="415" height="130" rx="13" fill="#f2fbf5" stroke="#77bc91" stroke-width="2"/>
+<rect x="1110" y="632" width="8" height="130" rx="4" fill="#32a263"/>
+<text x="1140" y="680" class="table-name" font-size="28">EAD_OUTPUT</text>
+<text x="1140" y="711" class="schema" >RISKDEMO.EAD_LGD_DEMO</text>
+<text x="1140" y="741" fill="#2b8852" font-size="17" font-weight="650">100,000 rows inserted</text>
+</g>
+<rect x="1643" y="276" width="500" height="860" rx="19" fill="#ffffff" stroke="#d6dee8" stroke-width="1.5"/>
+<text x="1682" y="337" class="section" >Lineage summary</text>
+<text x="1683" y="421" class="detail" >Source tables</text>
+<text x="2101" y="421" class="metric" text-anchor="end">5</text>
+<line x1="1683" y1="445" x2="2103" y2="445" stroke="#dce3ec"/>
+<text x="1683" y="512" class="detail" >Output tables</text>
+<text x="2101" y="512" class="metric" text-anchor="end">1</text>
+<line x1="1683" y1="536" x2="2103" y2="536" stroke="#dce3ec"/>
+<text x="1683" y="603" class="detail" >Inferred edges</text>
+<text x="2101" y="603" class="metric" text-anchor="end">5</text>
+<line x1="1683" y1="627" x2="2103" y2="627" stroke="#dce3ec"/>
+<text x="1683" y="694" class="detail" >TableScan operators</text>
+<text x="2101" y="694" class="metric" text-anchor="end">15</text>
+<line x1="1683" y1="718" x2="2103" y2="718" stroke="#dce3ec"/>
+<text x="1682" y="804" class="section" >Evidence</text>
+<text x="1683" y="858" class="detail" >Source tables: observed TableScan</text>
+<text x="1683" y="886" class="detail" >operators in the final CTAS profile.</text>
+<text x="1683" y="935" class="detail" >Arrows: inferred source-to-output</text>
+<text x="1683" y="963" class="detail" >dependencies from the query plan.</text>
+<text x="1683" y="1032" fill="#a06421" font-size="17" font-weight="650">Native GET_LINEAGE unavailable</text>
+<text x="1683" y="1060" class="detail" >on this Standard Edition account.</text>
+</svg>
