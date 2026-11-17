@@ -95,6 +95,11 @@ The operator GraphML/CSV exporters continue to export query execution operators;
 their node count depends on the optimizer and is independent of the six table
 nodes. The screenshots and example GraphML illustrate an archived profile.
 
+The [Streamlit table-lineage app](lineage_app/README.md) displays the same
+profile-derived six-table graph inside Snowflake, with clickable tables, zoom,
+scan counts, and join conditions. You can upload a saved CTAS profile JSON from
+a new run; Enterprise Edition is not required.
+
 ## Build and run locally
 
 Install JDK 17. The wrapper downloads Gradle; no Scala, Hadoop, Spark, Python or

@@ -1,0 +1,19 @@
+definition_version: 2
+entities:
+  ead_lineage:
+    type: streamlit
+    identifier:
+      name: EAD_LINEAGE_APP
+      database: RISKDEMO
+      schema: EAD_LGD_DEMO
+    title: EAD/LGD CTAS table lineage
+    query_warehouse: SCALING_BENCH_WH
+    runtime_name: SYSTEM$WAREHOUSE_RUNTIME
+    main_file: streamlit_app.py
+    artifacts:
+      - streamlit_app.py
+      - lineage_app/__init__.py
+      - lineage_app/lineage_model.py
+      - lineage_app/lineage_view.py
+      - src: ctas/01c879d8-0005-bcf4-0001-91ae0049f532/query-profile.json
+        dest: ctas/01c879d8-0005-bcf4-0001-91ae0049f532/query-profile.json
