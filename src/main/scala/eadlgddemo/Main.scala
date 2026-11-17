@@ -43,12 +43,14 @@ Profiles verified: ${profiler.profilesVerified}. Required: ${config.requireQuery
 ${lines.mkString("\n")}
 
 Final outputs: ${outputs.mkString(", ")}
-KEEP_OBJECTS=${config.keepObjects}: ${if (config.keepObjects) "final outputs retained" else "final outputs removed during cleanup"}.
+KEEP_OBJECTS=${config.keepObjects}: ${if (config.keepObjects) "five input tables and final outputs retained" else "input tables and final outputs removed during cleanup"}.
 Temporary checkpoints end with this session. Cleanup SQL: sql/cleanup.sql.
 Artifacts: ${dir.toAbsolutePath}
 
 Find each query ID in Snowsight Query History, then open Query Profile.
-Each profile describes one query; upstream checkpoint work has separate profiles.
+Final CTAS executes the full plan over all five input tables.
+Table/column lineage worksheet: sql/E1-inspect-lineage.sql.
+Expected six-table graph: E1-expected-table-lineage.graphml.
 """
           Json.writeText(dir.resolve("run-summary.md"), summary)
           lines.foreach(println)

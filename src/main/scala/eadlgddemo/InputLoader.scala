@@ -51,8 +51,8 @@ final class InputLoader(session: Session, connection: ConnectionConfig, profiler
       }
       manifest.files.foreach { file =>
         val table = tables(file.dataset.name)
-        session.sql(s"CREATE TEMPORARY TABLE $table (${file.dataset.ddl})").collect()
-        registry.add("TABLE", table)
+        session.sql(s"CREATE TRANSIENT TABLE $table (${file.dataset.ddl})").collect()
+        registry.add("TABLE", table, output = true)
         val copy = s"""COPY INTO $table FROM @$stage/$runId/
           FILES = (${Sql.literal(file.path.getFileName.toString)})
           FILE_FORMAT = (TYPE = PARQUET) MATCH_BY_COLUMN_NAME = CASE_SENSITIVE

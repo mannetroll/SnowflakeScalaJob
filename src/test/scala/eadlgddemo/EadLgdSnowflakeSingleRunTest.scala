@@ -24,6 +24,16 @@ final class EadLgdSnowflakeSingleRunTest extends AnyFunSuite {
     assert(phases.last.get("businessRows").asLong() == config.customerCount)
     val validation = Json.mapper.readTree(result.directory.resolve("validation-summary.json").toFile)
     assert(validation.get("correctnessVerified").asBoolean())
-    if (config.requireQueryProfiles) assert(result.profilesVerified)
+    if (config.requireQueryProfiles) {
+      assert(result.profilesVerified)
+      val profileFile = phases.last.get("profiles").elements().asScala.toVector.head.get("artifact").asText()
+      val document = Json.mapper.readTree(new java.io.File(profileFile))
+      val profile = QueryProfileGraphml.parse(document.get("queryId").asText(), document)
+      val scans = profile.operators.filter(_.kind == "TableScan")
+        .map(_.attributes.path("table_name").asText().replace("\"", "").toUpperCase).toSet
+      val expected = Json.mapper.readTree(result.directory.resolve("E1-expected-table-lineage.json").toFile)
+      val sources = expected.get("edges").elements().asScala.map(_.get("source").asText()).toSet
+      assert(scans.intersect(sources) == sources, s"Final CTAS must scan all five named inputs: $scans")
+    }
   }
 }

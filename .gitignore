@@ -20,8 +20,9 @@ secrets/
 *.env
 !.env.example
 
-# Python helper environments and generated files; keep uv.lock versioned.
+# Python helper environments and generated files
 .venv/
+uv.lock
 __pycache__/
 *.py[cod]
 *.egg-info/

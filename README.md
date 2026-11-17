@@ -18,25 +18,24 @@ three checkpoints (**CP1, CP2 and CP3**) and the final **CTAS** (Create Table As
 Select). All five input datasets are loaded before CP1 starts.
 
 Each checkpoint calls native Snowpark `DataFrame.cacheResult()` to materialize
-its result in Snowflake. The next stage reads that cached result, giving the job
-explicit processing boundaries:
+its result in Snowflake for validation and separate profiling. Each stage uses
+the preceding lazy calculation plan; the final CTAS includes the full computation:
 
 | Stage | Work performed | Rows in the demonstrated run |
 | --- | --- | ---: |
 | **CP1 — account EAD** | Join accounts with customers and calculate exposure at default. | 300,000 accounts |
-| **CP2 — account collateral** | Read CP1 and add each account's allocated, discounted collateral value. | 300,000 accounts |
-| **CP3 — account LGD** | Read CP2, combine expected recoveries, cap recovery at EAD and calculate loss given default. | 300,000 accounts |
-| **FINAL_CTAS — customer output** | Read CP3, aggregate by customer, rank accounts, join customer attributes and write the final transient table. | 100,000 customers |
+| **CP2 — account collateral** | Calculate EAD and add each account's allocated, discounted collateral value. | 300,000 accounts |
+| **CP3 — account LGD** | Calculate EAD/collateral, combine expected recoveries, cap recovery at EAD and calculate loss given default. | 300,000 accounts |
+| **FINAL_CTAS — customer output** | Execute the full account plan, aggregate by customer, rank accounts, join customer attributes and write the final transient table. | 100,000 customers |
 
 Each checkpoint has its own materialization query ID and profile. With the pinned
 Snowpark version, that data query is the `INSERT ... SELECT` emitted by
-`cacheResult()`. The final CTAS has a fourth query ID; its profile shows the work
-performed after CP3. The earlier checkpoint calculations are visible in their
-respective profiles.
+`cacheResult()`. The final CTAS has a fourth query ID; its profile includes all five source tables and the full calculation.
+Checkpoint profiles provide separate views of each calculation stage.
 
 ### Final CTAS in Snowflake
 
-The screenshot below shows query `01c73375-0005-833e-0001-91ae00232802` on
+The archived screenshot below shows query `01c73375-0005-833e-0001-91ae00232802` on
 `SCALING_BENCH_WH` (X-Small). Select **Step 2** to see the connected graph: scans,
 window ranking, aggregation and joins feed the CTAS write of 100,000 rows.
 **Step 1** contains the table-creation operation. This query has 13 operators in
@@ -57,6 +56,35 @@ Open the [example GraphML file](docs/qp-demo.graphml) in yEd to explore it.
 
 For tabular exports of the same profile, see the [SQL CSV export instructions](sql/README.md)
 for `nodes.csv` and `relationships.csv`.
+
+
+## Six-table lineage example
+
+A single execution creates five named transient source tables (CUSTOMERS,
+ACCOUNTS, COLLATERAL_ASSETS, ACCOUNT_COLLATERAL and EXPECTED_RECOVERIES) and
+one transient customer OUTPUT table. All five sources contribute to OUTPUT.
+The three temporary checkpoint caches are diagnostic snapshots.
+
+Run the single-run command above with `KEEP_OBJECTS=true` to retain all six
+tables after the session ends. The determinism suite retains seven tables:
+five shared inputs and two outputs. With `KEEP_OBJECTS=false`, cleanup removes
+all run tables. The generated `sql/cleanup.sql` drops exact run objects.
+
+Each run writes `E1-expected-table-lineage.json` and
+`E1-expected-table-lineage.graphml` with six table nodes and five
+expected source-to-output edges, plus `sql/E1-inspect-lineage.sql` with actual
+run names. Execute that worksheet to retrieve observed table lineage and
+column lineage for TOTAL_EAD and LGD_AMOUNT. The expected manifest is a
+dependency specification, not evidence returned by Snowflake. Open the GraphML
+in yEd to view the expected six-node graph.
+
+[GET_LINEAGE](https://docs.snowflake.com/en/sql-reference/functions/get_lineage-snowflake-core)
+requires Enterprise Edition or higher and the appropriate lineage privileges.
+Metadata may appear after the job completes; inspect the output's Lineage tab
+in Catalog Explorer or rerun the worksheet later if results are initially empty.
+The operator GraphML/CSV exporters continue to export query execution operators;
+their node count depends on the optimizer and is independent of the six table
+nodes. The screenshots and example GraphML illustrate an archived profile.
 
 ## Build and run locally
 
@@ -133,6 +161,11 @@ and an INSERT SELECT; the INSERT is the data query. See the official
 and [DataFrame APIs](https://docs.snowflake.com/en/developer-guide/snowpark/scala/working-with-dataframes).
 
 ## Connection configuration
+
+The Python project pins Snowflake CLI in `pyproject.toml`; `uv` generates an
+ignored local `uv.lock`. From this directory, run `uv run snow connection test`
+to test the CLI's default connection. The Scala job continues to read
+`snowflake.properties` or the environment variables below.
 
 Use an existing warehouse and explicitly supplied sandbox database/schema. The
 application creates no warehouse, database, schema, role or grant and never resizes
@@ -254,7 +287,7 @@ benchmarks.
 | `CUSTOMER_COUNT` | `100000` | 10–1,000,000; exactly 3 accounts each |
 | `DATA_SEED` | `20251130` | signed 64-bit seed |
 | `REPORTING_DATE` | `2025-11-30` | ISO date |
-| `KEEP_OBJECTS` | `false` | retain the final transient output(s) only |
+| `KEEP_OBJECTS` | `false` | retain all five transient inputs and final output(s) |
 | `REQUIRE_QUERY_PROFILES` | `true` | missing profile evidence fails acceptance |
 | `COLLATERAL_DISCOUNT_BPS` | `500` | annual asset rate, 0–10,000 |
 | `STATEMENT_TIMEOUT_SECONDS` | `1800` | 60–86,400, dedicated session |
@@ -271,7 +304,7 @@ and [model, rounding and reference cohort](docs/model.md).
 Five files are generated under `build/ead-lgd/<run-id>/input/`. Their manifest
 records schemas, nullability, row counts, sizes and SHA-256 hashes. Every file is
 uploaded into a run-specific internal-stage path, then loaded into explicit NOT
-NULL landing tables. COPY uses exact filenames, case-sensitive column matching
+NULL transient landing tables. COPY uses exact filenames, case-sensitive column matching
 and `ON_ERROR=ABORT_STATEMENT`, without a COPY SELECT transformation. PUT/COPY
 results, actual counts, nulls, physical keys, foreign keys, domains and
 same-customer asset sharing are verified before a `LOADS_COMPLETE` boundary permits
@@ -302,8 +335,9 @@ This is a **logical dependency diagram**, not a Snowflake execution profile.
 
 One dedicated, non-shared session is tagged with job, run, execution (`E1`/`E2`)
 and phase. `USE_CACHED_RESULT=FALSE` controls persisted query-result reuse; it does
-not disable explicit Snowpark caching. Each checkpoint consumes the preceding
-cached DataFrame. Cache handles remain alive through dependent actions/validation.
+not disable explicit Snowpark caching. Checkpoints materialize independent lazy
+plans for diagnostics. Cache handles remain alive through validation; the final
+CTAS reads the named source tables through the full lazy plan.
 
 The profiler polls `QUERY_HISTORY_BY_SESSION`, including client-generated SQL,
 with bounded server timestamps, session ID, exact phase tag and result limit
@@ -321,7 +355,7 @@ rows; CTAS command-result row counts are not interpreted as customers written.
 In Snowsight open **Monitoring → Query History** (also called Activity → Query
 History in some UI versions), find a printed query ID, open details and choose
 **Query Profile**. Repeat for CP1, CP2, CP3 and FINAL_CTAS in each execution.
-Each profile describes one query; upstream checkpoint work has separate profiles.
+Each profile describes one query; the final CTAS includes the full calculation.
 Three checkpoints are a demo requirement, not a prerequisite for a profile graph.
 Exact physical shapes and timings depend on the optimizer and are never invented.
 
@@ -450,8 +484,11 @@ fixture-manifest.json
 load-results.json
 query-manifest.json
 profiles/E1-<phase>-<query-id>.json     # E2 also present in determinism suite
+E1-expected-table-lineage.json          # six expected table nodes and five edges
+E1-expected-table-lineage.graphml       # yEd view of expected table lineage
 sql/executed-ctas.sql                 # actual CTAS statement(s)
 sql/E1-executed-ctas.sql               # E2 also present in determinism suite
+sql/E1-inspect-lineage.sql              # observed table and column lineage query
 sql/inspect-queries.sql               # actual query IDs; runnable
 sql/cleanup.sql                       # exact registered objects only
 validation-summary.json
@@ -469,10 +506,10 @@ SQL MINUS between fresh executions.
 Counts and uniqueness are checked separately, so set comparisons cannot hide
 duplicates. Full outputs are never collected locally.
 
-Default cleanup drops all registered objects. `KEEP_OBJECTS=true` retains only the
-final transient table (two in the determinism suite); run generated
+Default cleanup drops all registered objects. `KEEP_OBJECTS=true` retains the five
+transient inputs and final transient table (two outputs in the determinism suite); run generated
 `sql/cleanup.sql` when finished.
-Temporary checkpoints, inputs, views and stage end with the session and are also
+Temporary checkpoints, views and stage end with the session and are also
 explicitly cleaned up where registered. Retaining final outputs cannot retain
 checkpoint data. Cleanup uses exact registered names and preserves the original
 exception if cleanup also fails.

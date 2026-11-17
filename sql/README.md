@@ -85,3 +85,14 @@ GET @~/query-profile-csv/01c73375-0005-833e-0001-91ae00232802/relationships.csv
 Change the destination directory as needed. For Windows, use a destination such
 as `file://C:/temp/query-profile-csv/`. Use Snowsight for the export and a client
 supporting `GET` for the local download.
+
+## Table and column lineage
+
+A job run also generates `sql/E1-inspect-lineage.sql` in its artifact directory.
+Run with `KEEP_OBJECTS=true` to preserve the five named inputs and customer
+output. Execute that worksheet to query observed upstream table lineage and
+TOTAL_EAD/LGD_AMOUNT column lineage using `SNOWFLAKE.CORE.GET_LINEAGE`.
+The six table nodes are distinct from operator nodes in these CSV exports.
+The run also writes `E1-expected-table-lineage.graphml` for an expected
+six-node table graph in yEd; use `GET_LINEAGE` for Snowflake's observed edges.
+See the [six-table example](../README.md#six-table-lineage-example).

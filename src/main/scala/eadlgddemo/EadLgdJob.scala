@@ -45,7 +45,7 @@ final class EadLgdJob(session: Session, connection: ConnectionConfig,
     val allocations = linked.withColumn("ALLOCATED_PV", sqlExpr("CAST(ROUND(ASSET_PV * ALLOCATION_FRACTION, 6) AS NUMBER(24,6))"))
     val collateralAccounts = allocations.groupBy(col("ACCOUNT_ID")).agg(
       sum(col("ALLOCATED_PV")).as("COLLATERAL_PV"), count(lit(1)).as("COLLATERAL_LINK_COUNT"))
-    val accountCollateralDf = cp1.join(collateralAccounts, Seq("ACCOUNT_ID"), "left")
+    val accountCollateralDf = accountEadDf.join(collateralAccounts, Seq("ACCOUNT_ID"), "left")
       .withColumn("COLLATERAL_PV", sqlExpr("CAST(COALESCE(COLLATERAL_PV, 0) AS NUMBER(24,6))"))
       .withColumn("COLLATERAL_LINK_COUNT", coalesce(col("COLLATERAL_LINK_COUNT"), lit(0)))
     val cp2 = profiler.checkpoint("CP2_ACCOUNT_COLLATERAL", config.customerCount.toLong * 3) {
@@ -58,12 +58,12 @@ final class EadLgdJob(session: Session, connection: ConnectionConfig,
       .withColumn("VERSION_RANK", row_number().over(Window.partitionBy(col("RECOVERY_EVENT_ID"))
         .orderBy(col("VERSION").desc, col("REVISION_ORDER").desc, col("ACCOUNT_ID").asc)))
       .filter(col("VERSION_RANK") === lit(1)).drop("VERSION_RANK")
-    val discounted = deduplicated.join(cp2.select("ACCOUNT_ID", "DISCOUNT_BPS"), Seq("ACCOUNT_ID"))
+    val discounted = deduplicated.join(accountCollateralDf.select("ACCOUNT_ID", "DISCOUNT_BPS"), Seq("ACCOUNT_ID"))
       .withColumn("EVENT_PV", sqlExpr("""CAST(ROUND((RECOVERY_CENTS - COST_CENTS) / 100.0
         / POWER(1 + DISCOUNT_BPS / 10000.0, MONTHS_TO_RECOVERY / 12.0), 6) AS NUMBER(24,6))"""))
     val accountRecoveries = discounted.groupBy(col("ACCOUNT_ID")).agg(
       sum(col("EVENT_PV")).as("UNSECURED_RECOVERY_PV"), count(lit(1)).as("RECOVERY_EVENT_COUNT"))
-    val accountLgdDf = cp2.join(accountRecoveries, Seq("ACCOUNT_ID"), "left")
+    val accountLgdDf = accountCollateralDf.join(accountRecoveries, Seq("ACCOUNT_ID"), "left")
       .withColumn("UNSECURED_RECOVERY_PV", sqlExpr("CAST(COALESCE(UNSECURED_RECOVERY_PV, 0) AS NUMBER(24,6))"))
       .withColumn("RECOVERY_EVENT_COUNT", coalesce(col("RECOVERY_EVENT_COUNT"), lit(0)))
       .withColumn("RECOVERY_CAPACITY", sqlExpr("CAST(GREATEST(COLLATERAL_PV + UNSECURED_RECOVERY_PV, 0) AS NUMBER(24,6))"))
@@ -75,9 +75,11 @@ final class EadLgdJob(session: Session, connection: ConnectionConfig,
     }
 
     profiler.phase("FINAL_PLAN")
+    // Use the full lazy plan so CTAS reads all five named input tables.
+    // Checkpoint caches are diagnostic snapshots, never final-plan inputs.
     // All three operations below survive into the final CTAS: aggregation, joins,
     // and a used ROW_NUMBER window. No collection/materialization of this result.
-    val totals = cp3.groupBy(col("CUSTOMER_ID"), col("REPORTING_DATE")).agg(
+    val totals = accountLgdDf.groupBy(col("CUSTOMER_ID"), col("REPORTING_DATE")).agg(
       count(lit(1)).as("ACCOUNT_COUNT"), sum(col("DRAWN_BALANCE")).as("DRAWN_BALANCE"),
       sum(col("UNDRAWN")).as("UNDRAWN_AMOUNT"), sum(col("EAD")).as("TOTAL_EAD"),
       sum(col("CAPPED_RECOVERY")).as("CAPPED_RECOVERY"), sum(col("LGD_AMOUNT")).as("LGD_AMOUNT"),
@@ -86,7 +88,7 @@ final class EadLgdJob(session: Session, connection: ConnectionConfig,
       sum(sqlExpr("IFF(COLLATERAL_LINK_COUNT = 0, 1, 0)")).as("MISSING_COLLATERAL_ACCOUNT_COUNT"),
       sum(sqlExpr("IFF(RECOVERY_EVENT_COUNT = 0, 1, 0)")).as("MISSING_RECOVERY_ACCOUNT_COUNT"),
       sum(sqlExpr("IFF(RECOVERY_CAPACITY > EAD, 1, 0)")).as("EXCESS_RECOVERY_ACCOUNT_COUNT"))
-    val top = cp3.withColumn("EAD_RANK", row_number().over(Window.partitionBy(col("CUSTOMER_ID"))
+    val top = accountLgdDf.withColumn("EAD_RANK", row_number().over(Window.partitionBy(col("CUSTOMER_ID"))
       .orderBy(col("EAD").desc, col("ACCOUNT_ID").asc)))
       .filter(col("EAD_RANK") === lit(1))
       .select(col("CUSTOMER_ID"), col("ACCOUNT_ID").as("HIGHEST_EAD_ACCOUNT_ID"))
@@ -106,6 +108,7 @@ final class EadLgdJob(session: Session, connection: ConnectionConfig,
     val existing = if (java.nio.file.Files.exists(combinedPath)) new String(java.nio.file.Files.readAllBytes(combinedPath), java.nio.charset.StandardCharsets.UTF_8) else ""
     Json.writeText(combinedPath, existing + s"-- $execution\n$sql;\n")
     profiler.finalCtas(sql, output, config.customerCount)
+    TableLineage.write(loaded, output, execution, dir)
     JobResult(output, execution, cp1, cp2, cp3, allocations, collateralAccounts, deduplicated,
       accountRecoveries, profiler.phases.filter(_.execution == execution), dir)
   }
