@@ -23,7 +23,7 @@ final case class LoadedInputs(tables: Map[String, String], counts: Map[String, L
 }
 
 final class InputLoader(session: Session, connection: ConnectionConfig, profiler: QueryProfiler,
-    registry: ObjectRegistry, runId: String, dir: Path) {
+    registry: ObjectRegistry, dir: Path) {
   def load(manifest: FixtureManifest): LoadedInputs = {
     require(manifest.files.map(_.dataset.name).toSet == Datasets.all.map(_.name).toSet && manifest.files.size == 5)
     val results = ArrayBuffer.empty[Map[String, Any]]
@@ -32,16 +32,16 @@ final class InputLoader(session: Session, connection: ConnectionConfig, profiler
     def persist(): Unit = Json.write(dir.resolve("load-results.json"), Map(
       "loads" -> results.toVector, "checks" -> checks.toVector, "allFiveLoadsCompletedAtServerTime" -> boundary))
     profiler.phase("FIXTURE_SETUP")
-    val stage = connection.qualified(s"EAD_${runId}_STAGE")
+    val stage = connection.qualified("EAD_STAGE")
     session.sql(s"CREATE TEMPORARY STAGE $stage").collect()
     registry.add("STAGE", stage)
-    val tables = manifest.files.map(f => f.dataset.name -> connection.qualified(s"EAD_${runId}_${f.dataset.name}")).toMap
+    val tables = manifest.files.map(f => f.dataset.name -> connection.qualified(s"EAD_${f.dataset.name}")).toMap
     Lifecycle.protecting {
       // Finish every upload before loading; the job is only called after every load validates.
       manifest.files.foreach { file =>
         require(FixtureGenerator.checksum(file.path) == file.sha256, s"Fixture changed: ${file.dataset.name}")
         val localUri = StageFiles.putUri(file.path)
-        val uploaded = session.file.put(Sql.literal(localUri), s"@$stage/$runId/",
+        val uploaded = session.file.put(Sql.literal(localUri), s"@$stage/inputs/",
           Map("AUTO_COMPRESS" -> "FALSE", "OVERWRITE" -> "FALSE", "PARALLEL" -> "4"))
         results += Map("dataset" -> file.dataset.name, "operation" -> "PUT", "results" -> uploaded.toVector)
         persist()
@@ -53,7 +53,7 @@ final class InputLoader(session: Session, connection: ConnectionConfig, profiler
         val table = tables(file.dataset.name)
         session.sql(s"CREATE TRANSIENT TABLE $table (${file.dataset.ddl})").collect()
         registry.add("TABLE", table, output = true)
-        val copy = s"""COPY INTO $table FROM @$stage/$runId/
+        val copy = s"""COPY INTO $table FROM @$stage/inputs/
           FILES = (${Sql.literal(file.path.getFileName.toString)})
           FILE_FORMAT = (TYPE = PARQUET) MATCH_BY_COLUMN_NAME = CASE_SENSITIVE
           ON_ERROR = ABORT_STATEMENT FORCE = FALSE"""

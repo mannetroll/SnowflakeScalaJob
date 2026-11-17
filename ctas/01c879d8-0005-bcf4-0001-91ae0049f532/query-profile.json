@@ -1,0 +1,664 @@
+{
+  "queryId" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+  "error" : null,
+  "operators" : [ {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"other\": 1.000000000000000e+00,\n  \"overall_percentage\": 1.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{}",
+    "STEP_ID" : 1,
+    "OPERATOR_ATTRIBUTES" : "{}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 0,
+    "PARENT_OPERATORS" : null,
+    "OPERATOR_TYPE" : "CREATE TABLE"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 0\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 0,
+    "PARENT_OPERATORS" : null,
+    "OPERATOR_TYPE" : "Result"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 1.250000000000000e-01,\n  \"remote_disk_io\": 1.250000000000000e-01\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"dml\": {\n    \"number_of_rows_inserted\": 100000\n  },\n  \"input_rows\": 100000,\n  \"io\": {\n    \"bytes_written\": 4246528\n  },\n  \"output_rows\": 0\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"input_expressions\": [\n    \"EAD_ACCOUNTS.CUSTOMER_ID\",\n    \"'2025-11-30'\",\n    \"COUNT(COUNT(COUNT(1)))\",\n    \"SUM(SUM(SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100)))\",\n    \"SUM(SUM(SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))\",\n    \"SUM(SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))))\",\n    \"SUM(SUM(SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))\",\n    \"SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))))\",\n    \"SUM(SUM(SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0))))\",\n    \"SUM(SUM(SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) > ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0))))\",\n    \"SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0))))\",\n    \"SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0))))\",\n    \"SUM(SUM(SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) > (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0))))\",\n    \"EAD_CUSTOMERS.SEGMENT\",\n    \"EAD_CUSTOMERS.COUNTRY\",\n    \"EAD_CUSTOMERS.RATING\",\n    \"EAD_ACCOUNTS.ACCOUNT_ID\",\n    \"IFNULL(SCALED_ROUND_INT_DIVIDE(SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))), NULLIF(SUM(SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))))), 0)), 0)\",\n    \"(EAD_CUSTOMERS.PD_BPS) / 10000\",\n    \"ROUND(SCALED_DECIMAL_MULTIPLY((EAD_CUSTOMERS.PD_BPS) / 10000, SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))), 4), 6)\",\n    \"'EUR'\"\n  ],\n  \"table_name\": \"SY29592.RISKDEMO.EAD_LGD_DEMO.EAD_OUTPUT\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 1,
+    "PARENT_OPERATORS" : "[\n  0\n]",
+    "OPERATOR_TYPE" : "CreateTableAsSelect"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 3.125000000000000e-02,\n  \"processing\": 3.125000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 200000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_ACCOUNTS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 2,
+    "PARENT_OPERATORS" : "[\n  1\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 200000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 3,
+    "PARENT_OPERATORS" : "[\n  2\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 460800,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 100000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"CUSTOMER_ID\",\n    \"SEGMENT\",\n    \"COUNTRY\",\n    \"RATING\",\n    \"PD_BPS\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 4,
+    "PARENT_OPERATORS" : "[\n  3\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 100000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"COUNT(COUNT(COUNT(1)))\",\n    \"SUM(SUM(SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100)))\",\n    \"SUM(SUM(SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))\",\n    \"SUM(SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))))\",\n    \"SUM(SUM(SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))\",\n    \"SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))))\",\n    \"SUM(SUM(SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0))))\",\n    \"SUM(SUM(SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) > ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0))))\",\n    \"SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0))))\",\n    \"SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0))))\",\n    \"SUM(SUM(SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) > (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0))))\"\n  ],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNTS.CUSTOMER_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 5,
+    "PARENT_OPERATORS" : "[\n  3\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 174560,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"COUNT(COUNT(1))\",\n    \"SUM(SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100))\",\n    \"SUM(SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))\",\n    \"SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))))\",\n    \"SUM(SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))\",\n    \"SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))\",\n    \"SUM(SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0)))\",\n    \"SUM(SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) > ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0)))\",\n    \"SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0)))\",\n    \"SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0)))\",\n    \"SUM(SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) > (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0)))\"\n  ],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNTS.CUSTOMER_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 6,
+    "PARENT_OPERATORS" : "[\n  5\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 274560,\n  \"output_rows\": 174560\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 7,
+    "PARENT_OPERATORS" : "[\n  6\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 100000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"3\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 8,
+    "PARENT_OPERATORS" : "[\n  7\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 231424,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 100000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"CUSTOMER_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 9,
+    "PARENT_OPERATORS" : "[\n  8\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 174560\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"COUNT(1)\",\n    \"SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100)\",\n    \"SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))\",\n    \"SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))\",\n    \"SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))\",\n    \"SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))\",\n    \"SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0))\",\n    \"SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) > ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0))\",\n    \"SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0))\",\n    \"SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0))\",\n    \"SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) > (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0))\"\n  ],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNTS.CUSTOMER_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 10,
+    "PARENT_OPERATORS" : "[\n  7\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 579991,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)\",\n  \"join_type\": \"LEFT OUTER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 11,
+    "PARENT_OPERATORS" : "[\n  10\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 1.562500000000000e-01,\n  \"processing\": 1.562500000000000e-01\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"SUM(ROUND(SCALED_DECIMAL_MULTIPLY(TO_NUMBER(ROUND((TO_DOUBLE(GREATEST((((EAD_COLLATERAL_ASSETS.VALUATION_CENTS) / 100) * (1 - ((EAD_COLLATERAL_ASSETS.HAIRCUT_BPS) / 10000))) - ((EAD_COLLATERAL_ASSETS.REALIZATION_COST_CENTS) / 100), 0))) / (POWER(TO_DOUBLE(1 + (500 / 10000)), TO_DOUBLE((EAD_COLLATERAL_ASSETS.MONTHS_TO_REALIZATION) / 12))), 6.0)), (EAD_ACCOUNT_COLLATERAL.ALLOCATION_WEIGHT) / SUM(EAD_ACCOUNT_COLLATERAL.ALLOCATION_WEIGHT) OVER (PARTITION BY EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID), 6), 6))\",\n    \"COUNT(1)\"\n  ],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 12,
+    "PARENT_OPERATORS" : "[\n  11\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 13,
+    "PARENT_OPERATORS" : "[\n  12\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 1.250000000000000e-01,\n  \"processing\": 1.250000000000000e-01\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"SUM(EAD_ACCOUNT_COLLATERAL.ALLOCATION_WEIGHT) OVER (PARTITION BY EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID)\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 14,
+    "PARENT_OPERATORS" : "[\n  13\n]",
+    "OPERATOR_TYPE" : "WindowFunction"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 539981,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_COLLATERAL_ASSETS.COLLATERAL_ID = EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 15,
+    "PARENT_OPERATORS" : "[\n  14\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 1717760,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 179994,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"COLLATERAL_ID\",\n    \"VALUATION_CENTS\",\n    \"HAIRCUT_BPS\",\n    \"REALIZATION_COST_CENTS\",\n    \"MONTHS_TO_REALIZATION\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 16,
+    "PARENT_OPERATORS" : "[\n  15\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"15\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 17,
+    "PARENT_OPERATORS" : "[\n  15\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 1764352,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 359987,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"ACCOUNT_ID\",\n    \"COLLATERAL_ID\",\n    \"ALLOCATION_WEIGHT\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 18,
+    "PARENT_OPERATORS" : "[\n  17\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 589648,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)\",\n  \"join_type\": \"LEFT OUTER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 19,
+    "PARENT_OPERATORS" : "[\n  11\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 1.250000000000000e-01,\n  \"processing\": 1.250000000000000e-01\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 579292,\n  \"output_rows\": 289648\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"SUM(TO_NUMBER(ROUND((TO_DOUBLE((EAD_EXPECTED_RECOVERIES.RECOVERY_CENTS - (EAD_EXPECTED_RECOVERIES.COST_CENTS)) / 100)) / (POWER(TO_DOUBLE(1 + ((EAD_ACCOUNTS.DISCOUNT_BPS) / 10000)), TO_DOUBLE((EAD_EXPECTED_RECOVERIES.MONTHS_TO_RECOVERY) / 12))), 6.0)))\",\n    \"COUNT(1)\"\n  ],\n  \"grouping_keys\": [\n    \"EAD_EXPECTED_RECOVERIES.ACCOUNT_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 20,
+    "PARENT_OPERATORS" : "[\n  19\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 1.250000000000000e-01,\n  \"processing\": 1.250000000000000e-01\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 879292,\n  \"output_rows\": 579292\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_ACCOUNTS.ACCOUNT_ID = EAD_EXPECTED_RECOVERIES.ACCOUNT_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 21,
+    "PARENT_OPERATORS" : "[\n  20\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 400000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 22,
+    "PARENT_OPERATORS" : "[\n  21\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 231424,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 100000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"CUSTOMER_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 23,
+    "PARENT_OPERATORS" : "[\n  22\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 3.125000000000000e-02,\n  \"processing\": 3.125000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 579991,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)\",\n  \"join_type\": \"LEFT OUTER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 24,
+    "PARENT_OPERATORS" : "[\n  22\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 25,
+    "PARENT_OPERATORS" : "[\n  24\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 26,
+    "PARENT_OPERATORS" : null,
+    "OPERATOR_TYPE" : "Buffer"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 27,
+    "PARENT_OPERATORS" : null,
+    "OPERATOR_TYPE" : "Split"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 28,
+    "PARENT_OPERATORS" : "[\n  27\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 29,
+    "PARENT_OPERATORS" : "[\n  28\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 539981,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_COLLATERAL_ASSETS.COLLATERAL_ID = EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID)\",\n  \"join_type\": \"SEMI\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 30,
+    "PARENT_OPERATORS" : "[\n  29\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 179994,\n  \"output_rows\": 179994\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_COLLATERAL_ASSETS.COLLATERAL_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 31,
+    "PARENT_OPERATORS" : "[\n  30\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 425984,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 179994,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"COLLATERAL_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 32,
+    "PARENT_OPERATORS" : "[\n  31\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID\",\n    \"EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 33,
+    "PARENT_OPERATORS" : "[\n  30\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 34,
+    "PARENT_OPERATORS" : "[\n  33\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 359987,\n  \"output_rows\": 359987\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"30\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 35,
+    "PARENT_OPERATORS" : "[\n  34\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 1682432,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 359987,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"ACCOUNT_ID\",\n    \"COLLATERAL_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 36,
+    "PARENT_OPERATORS" : "[\n  35\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"EAD_ACCOUNTS.ACCOUNT_ID IS NOT NULL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 37,
+    "PARENT_OPERATORS" : "[\n  24\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"22\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 38,
+    "PARENT_OPERATORS" : "[\n  37\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 1753088,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 300000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"ACCOUNT_ID\",\n    \"CUSTOMER_ID\",\n    \"DISCOUNT_BPS\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 39,
+    "PARENT_OPERATORS" : "[\n  38\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 585266,\n  \"output_rows\": 579292\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"(EAD_EXPECTED_RECOVERIES.ACCOUNT_ID IS NOT NULL) AND (ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST) = 1)\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 40,
+    "PARENT_OPERATORS" : "[\n  21\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 585266,\n  \"output_rows\": 585266\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"21\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 41,
+    "PARENT_OPERATORS" : "[\n  40\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 585266,\n  \"output_rows\": 585266\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST)\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 42,
+    "PARENT_OPERATORS" : "[\n  41\n]",
+    "OPERATOR_TYPE" : "WindowFunction"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 5854208,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 585266,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"RECOVERY_EVENT_ID\",\n    \"VERSION\",\n    \"ACCOUNT_ID\",\n    \"RECOVERY_CENTS\",\n    \"COST_CENTS\",\n    \"MONTHS_TO_RECOVERY\",\n    \"REVISION_ORDER\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 43,
+    "PARENT_OPERATORS" : "[\n  42\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 3.125000000000000e-02,\n  \"processing\": 3.125000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"7\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 44,
+    "PARENT_OPERATORS" : "[\n  19\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 3369472,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 300000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"ACCOUNT_ID\",\n    \"CUSTOMER_ID\",\n    \"PRODUCT_TYPE\",\n    \"DRAWN_CENTS\",\n    \"LIMIT_CENTS\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 45,
+    "PARENT_OPERATORS" : "[\n  44\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 100000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"ROW_NUMBER() OVER (PARTITION BY EAD_ACCOUNTS.CUSTOMER_ID ORDER BY ((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))) DESC NULLS LAST, EAD_ACCOUNTS.ACCOUNT_ID ASC NULLS FIRST) = 1\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 46,
+    "PARENT_OPERATORS" : "[\n  2\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 9.375000000000000e-02,\n  \"processing\": 9.375000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"ROW_NUMBER() OVER (PARTITION BY EAD_ACCOUNTS.CUSTOMER_ID ORDER BY ((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))) DESC NULLS LAST, EAD_ACCOUNTS.ACCOUNT_ID ASC NULLS FIRST)\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 47,
+    "PARENT_OPERATORS" : "[\n  46\n]",
+    "OPERATOR_TYPE" : "WindowFunction"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 400000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)\",\n  \"join_type\": \"INNER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 48,
+    "PARENT_OPERATORS" : "[\n  47\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 100000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"2\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 49,
+    "PARENT_OPERATORS" : "[\n  48\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 231424,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 100000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"CUSTOMER_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 50,
+    "PARENT_OPERATORS" : "[\n  49\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 579991,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)\",\n  \"join_type\": \"LEFT OUTER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 51,
+    "PARENT_OPERATORS" : "[\n  48\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 52,
+    "PARENT_OPERATORS" : null,
+    "OPERATOR_TYPE" : "Buffer"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 589648,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)\",\n  \"join_type\": \"LEFT OUTER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 53,
+    "PARENT_OPERATORS" : "[\n  51\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 289648,\n  \"output_rows\": 289648\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_EXPECTED_RECOVERIES.ACCOUNT_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 54,
+    "PARENT_OPERATORS" : "[\n  53\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 3.125000000000000e-02,\n  \"processing\": 3.125000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 879225,\n  \"output_rows\": 289648\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_ACCOUNTS.ACCOUNT_ID = EAD_EXPECTED_RECOVERIES.ACCOUNT_ID)\",\n  \"join_type\": \"SEMI\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 55,
+    "PARENT_OPERATORS" : "[\n  54\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 400000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)\",\n  \"join_type\": \"SEMI\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 56,
+    "PARENT_OPERATORS" : "[\n  55\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 100000,\n  \"output_rows\": 100000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_CUSTOMERS.CUSTOMER_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 57,
+    "PARENT_OPERATORS" : "[\n  56\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 231424,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 100000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"CUSTOMER_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 58,
+    "PARENT_OPERATORS" : "[\n  57\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 579991,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"equality_join_condition\": \"(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)\",\n  \"join_type\": \"LEFT OUTER\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 59,
+    "PARENT_OPERATORS" : "[\n  56\n]",
+    "OPERATOR_TYPE" : "Join"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 60,
+    "PARENT_OPERATORS" : "[\n  59\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 279991,\n  \"output_rows\": 279991\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 61,
+    "PARENT_OPERATORS" : null,
+    "OPERATOR_TYPE" : "Buffer"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"EAD_ACCOUNTS.ACCOUNT_ID IS NOT NULL\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 62,
+    "PARENT_OPERATORS" : "[\n  59\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"56\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 63,
+    "PARENT_OPERATORS" : "[\n  62\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 1372160,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 300000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"ACCOUNT_ID\",\n    \"CUSTOMER_ID\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 64,
+    "PARENT_OPERATORS" : "[\n  63\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 579292,\n  \"output_rows\": 579225\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [],\n  \"grouping_keys\": [\n    \"EAD_EXPECTED_RECOVERIES.ACCOUNT_ID\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 65,
+    "PARENT_OPERATORS" : "[\n  55\n]",
+    "OPERATOR_TYPE" : "Aggregate"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 585266,\n  \"output_rows\": 579292\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"filter_condition\": \"(EAD_EXPECTED_RECOVERIES.ACCOUNT_ID IS NOT NULL) AND (ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST) = 1)\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 66,
+    "PARENT_OPERATORS" : "[\n  65\n]",
+    "OPERATOR_TYPE" : "Filter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 3.125000000000000e-02,\n  \"processing\": 3.125000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 585266,\n  \"output_rows\": 585266\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"55\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 67,
+    "PARENT_OPERATORS" : "[\n  66\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 6.250000000000000e-02,\n  \"processing\": 6.250000000000000e-02\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 585266,\n  \"output_rows\": 585266\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"functions\": [\n    \"ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST)\"\n  ]\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 68,
+    "PARENT_OPERATORS" : "[\n  67\n]",
+    "OPERATOR_TYPE" : "WindowFunction"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 3019776,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 585266,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"RECOVERY_EVENT_ID\",\n    \"VERSION\",\n    \"ACCOUNT_ID\",\n    \"REVISION_ORDER\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 69,
+    "PARENT_OPERATORS" : "[\n  68\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"input_rows\": 300000,\n  \"output_rows\": 300000\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"join_id\": \"48\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 70,
+    "PARENT_OPERATORS" : "[\n  53\n]",
+    "OPERATOR_TYPE" : "JoinFilter"
+  }, {
+    "EXECUTION_TIME_BREAKDOWN" : "{\n  \"overall_percentage\": 0.000000000000000e+00\n}",
+    "OPERATOR_STATISTICS" : "{\n  \"io\": {\n    \"bytes_scanned\": 3369472,\n    \"percentage_scanned_from_cache\": 1,\n    \"scan_progress\": 1\n  },\n  \"output_rows\": 300000,\n  \"pruning\": {\n    \"partitions_scanned\": 1,\n    \"partitions_total\": 1\n  }\n}",
+    "STEP_ID" : 2,
+    "OPERATOR_ATTRIBUTES" : "{\n  \"columns\": [\n    \"ACCOUNT_ID\",\n    \"CUSTOMER_ID\",\n    \"PRODUCT_TYPE\",\n    \"DRAWN_CENTS\",\n    \"LIMIT_CENTS\"\n  ],\n  \"table_name\": \"RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS\"\n}",
+    "QUERY_ID" : "01c879d8-0005-bcf4-0001-91ae0049f532",
+    "OPERATOR_ID" : 71,
+    "PARENT_OPERATORS" : "[\n  70\n]",
+    "OPERATOR_TYPE" : "TableScan"
+  } ],
+  "verified" : true,
+  "artifact" : "ctas/01c879d8-0005-bcf4-0001-91ae0049f532/query-profile.json"
+}

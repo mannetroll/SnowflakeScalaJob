@@ -2,7 +2,6 @@ package eadlgddemo
 
 import java.nio.file.{Files, Path, Paths}
 import java.time.LocalDate
-import java.util.UUID
 import com.snowflake.snowpark.Session
 import scala.collection.JavaConverters._
 
@@ -33,7 +32,7 @@ object DemoConfig {
     bool(env, "KEEP_OBJECTS", false), bool(env, "REQUIRE_QUERY_PROFILES", true),
     env.getOrElse("COLLATERAL_DISCOUNT_BPS", "500").toInt,
     env.getOrElse("STATEMENT_TIMEOUT_SECONDS", "1800").toInt)
-  def runId(): String = "R" + UUID.randomUUID().toString.replace("-", "").toUpperCase
+  def runId(): String = "DEMO"
   def directory(runId: String): Path = Paths.get("build", "ead-lgd", Sql.identifier(runId))
 }
 

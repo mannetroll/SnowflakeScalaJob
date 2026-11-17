@@ -1,0 +1,1854 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3212" height="2996" viewBox="0 0 3212 2996" role="img" aria-label="Snowflake query profile for 01c879d8-0005-bcf4-0001-91ae0049f532">
+<defs>
+  <marker id="arrow" markerWidth="6" markerHeight="6" refX="5.3" refY="3" orient="auto">
+    <path d="M0 0 L6 3 L0 6 Z" fill="#9aa9bc"/>
+  </marker>
+</defs>
+<style>
+  text { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+  .title { fill:#20252d; font-size:42px; font-weight:700; }
+  .muted { fill:#68768e; }
+  .card-title { fill:#263244; font-size:11px; font-weight:650; }
+  .card-sub { fill:#697992; font-size:9px; }
+  .section { fill:#263244; font-size:27px; font-weight:700; }
+  .side-row { fill:#526786; font-size:19px; }
+  .side-value { fill:#263244; font-size:19px; }
+</style>
+<rect width="3212" height="2996" fill="#ffffff"/>
+<text x="62" y="78" class="title">Query profile</text>
+<text x="62" y="122" fill="#5b6c86" font-size="25">01c879d8-0005-bcf4-0001-91ae0049f532</text>
+<text x="62" y="167" fill="#697992" font-size="18">Step 2 of 2  ·  72 operators  ·  100,000 rows inserted</text>
+<rect x="61" y="203" width="172" height="43" rx="12" fill="#e7f0ff" stroke="#90b6fa"/>
+<text x="111" y="231" fill="#2463c5" font-size="18" font-weight="650">Step 2</text>
+<text x="260" y="230" fill="#697992" font-size="15">Operator data flows upward toward Result [0]</text>
+<rect x="54" y="259" width="2290" height="1711" rx="22" fill="#fbfcfe" stroke="#dce3ec"/>
+<rect x="54" y="2053" width="2290" height="896" rx="22" fill="#fbfcfe" stroke="#dce3ec"/>
+<text x="88" y="2099" fill="#526786" font-size="22" font-weight="650">Operators without a recorded parent</text>
+<text x="88" y="2125" fill="#697992" font-size="14">These groups are separate in the saved operator statistics.</text>
+<path d="M 1088.1 377.0 C 1088.1 354.0, 1088.1 354.0, 1088.1 336.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1088.1 476.0 C 1088.1 453.0, 1088.1 453.0, 1088.1 435.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 367.9 575.0 C 367.9 552.0, 1088.1 552.0, 1088.1 534.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 152.0 674.0 C 152.0 651.0, 367.9 651.0, 367.9 633.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 583.8 674.0 C 583.8 651.0, 367.9 651.0, 367.9 633.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 583.8 773.0 C 583.8 750.0, 583.8 750.0, 583.8 732.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 583.8 872.0 C 583.8 849.0, 583.8 849.0, 583.8 831.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 303.0 971.0 C 303.0 948.0, 583.8 948.0, 583.8 930.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 303.0 1070.0 C 303.0 1047.0, 303.0 1047.0, 303.0 1029.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 864.5 971.0 C 864.5 948.0, 583.8 948.0, 583.8 930.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 864.5 1070.0 C 864.5 1047.0, 864.5 1047.0, 864.5 1029.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 529.5 1169.0 C 529.5 1146.0, 864.5 1146.0, 864.5 1128.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 529.5 1268.0 C 529.5 1245.0, 529.5 1245.0, 529.5 1227.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 529.5 1367.0 C 529.5 1344.0, 529.5 1344.0, 529.5 1326.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 529.5 1466.0 C 529.5 1443.0, 529.5 1443.0, 529.5 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 454.0 1565.0 C 454.0 1542.0, 529.5 1542.0, 529.5 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 605.0 1565.0 C 605.0 1542.0, 529.5 1542.0, 529.5 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 605.0 1664.0 C 605.0 1641.0, 605.0 1641.0, 605.0 1623.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1199.6 1169.0 C 1199.6 1146.0, 864.5 1146.0, 864.5 1128.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1039.1 1268.0 C 1039.1 1245.0, 1199.6 1245.0, 1199.6 1227.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1039.1 1367.0 C 1039.1 1344.0, 1039.1 1344.0, 1039.1 1326.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 869.2 1466.0 C 869.2 1443.0, 1039.1 1443.0, 1039.1 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 756.0 1565.0 C 756.0 1542.0, 869.2 1542.0, 869.2 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 982.5 1565.0 C 982.5 1542.0, 869.2 1542.0, 869.2 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 907.0 1664.0 C 907.0 1641.0, 982.5 1641.0, 982.5 1623.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 360.0 2237.0 C 360.0 2214.0, 360.0 2214.0, 360.0 2196.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 360.0 2336.0 C 360.0 2313.0, 360.0 2313.0, 360.0 2295.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 360.0 2435.0 C 360.0 2412.0, 360.0 2412.0, 360.0 2394.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 280.0 2534.0 C 280.0 2511.0, 360.0 2511.0, 360.0 2493.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 280.0 2633.0 C 280.0 2610.0, 280.0 2610.0, 280.0 2592.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 440.0 2534.0 C 440.0 2511.0, 360.0 2511.0, 360.0 2493.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 440.0 2633.0 C 440.0 2610.0, 440.0 2610.0, 440.0 2592.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 440.0 2732.0 C 440.0 2709.0, 440.0 2709.0, 440.0 2691.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 440.0 2831.0 C 440.0 2808.0, 440.0 2808.0, 440.0 2790.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1058.0 1664.0 C 1058.0 1641.0, 982.5 1641.0, 982.5 1623.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1058.0 1763.0 C 1058.0 1740.0, 1058.0 1740.0, 1058.0 1722.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1058.0 1862.0 C 1058.0 1839.0, 1058.0 1839.0, 1058.0 1821.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1209.0 1466.0 C 1209.0 1443.0, 1039.1 1443.0, 1039.1 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1209.0 1565.0 C 1209.0 1542.0, 1209.0 1542.0, 1209.0 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1209.0 1664.0 C 1209.0 1641.0, 1209.0 1641.0, 1209.0 1623.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1209.0 1763.0 C 1209.0 1740.0, 1209.0 1740.0, 1209.0 1722.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1360.0 1268.0 C 1360.0 1245.0, 1199.6 1245.0, 1199.6 1227.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1360.0 1367.0 C 1360.0 1344.0, 1360.0 1344.0, 1360.0 1326.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1808.3 575.0 C 1808.3 552.0, 1088.1 552.0, 1088.1 534.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1808.3 674.0 C 1808.3 651.0, 1808.3 651.0, 1808.3 633.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1808.3 773.0 C 1808.3 750.0, 1808.3 750.0, 1808.3 732.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1511.0 872.0 C 1511.0 849.0, 1808.3 849.0, 1808.3 831.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1511.0 971.0 C 1511.0 948.0, 1511.0 948.0, 1511.0 930.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2105.6 872.0 C 2105.6 849.0, 1808.3 849.0, 1808.3 831.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2105.6 971.0 C 2105.6 948.0, 2105.6 948.0, 2105.6 930.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1945.1 1070.0 C 1945.1 1047.0, 2105.6 1047.0, 2105.6 1029.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1945.1 1169.0 C 1945.1 1146.0, 1945.1 1146.0, 1945.1 1128.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1775.2 1268.0 C 1775.2 1245.0, 1945.1 1245.0, 1945.1 1227.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1662.0 1367.0 C 1662.0 1344.0, 1775.2 1344.0, 1775.2 1326.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1662.0 1466.0 C 1662.0 1443.0, 1662.0 1443.0, 1662.0 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1888.5 1367.0 C 1888.5 1344.0, 1775.2 1344.0, 1775.2 1326.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1813.0 1466.0 C 1813.0 1443.0, 1888.5 1443.0, 1888.5 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1964.0 1466.0 C 1964.0 1443.0, 1888.5 1443.0, 1888.5 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1964.0 1565.0 C 1964.0 1542.0, 1964.0 1542.0, 1964.0 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 1964.0 1664.0 C 1964.0 1641.0, 1964.0 1641.0, 1964.0 1623.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2115.0 1268.0 C 2115.0 1245.0, 1945.1 1245.0, 1945.1 1227.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2115.0 1367.0 C 2115.0 1344.0, 2115.0 1344.0, 2115.0 1326.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2115.0 1466.0 C 2115.0 1443.0, 2115.0 1443.0, 2115.0 1425.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2115.0 1565.0 C 2115.0 1542.0, 2115.0 1542.0, 2115.0 1524.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2115.0 1664.0 C 2115.0 1641.0, 2115.0 1641.0, 2115.0 1623.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2266.0 1070.0 C 2266.0 1047.0, 2105.6 1047.0, 2105.6 1029.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<path d="M 2266.0 1169.0 C 2266.0 1146.0, 2266.0 1146.0, 2266.0 1128.0" fill="none" stroke="#aab7c8" stroke-width="1.35" marker-end="url(#arrow)"/>
+<g><title>{
+  &quot;operator&quot;: &quot;Result [0]&quot;,
+  &quot;attributes&quot;: {},
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 0
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1018.1" y="278.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1027.1" y="294.0" class="card-title">Result [0]</text>
+<text x="1150.1" y="294.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1027.1" y="309.0" class="card-sub"></text>
+<rect x="1027.1" y="317.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;CreateTableAsSelect [1]&quot;,
+  &quot;attributes&quot;: {
+    &quot;input_expressions&quot;: [
+      &quot;EAD_ACCOUNTS.CUSTOMER_ID&quot;,
+      &quot;'2025-11-30'&quot;,
+      &quot;COUNT(COUNT(COUNT(1)))&quot;,
+      &quot;SUM(SUM(SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100)))&quot;,
+      &quot;SUM(SUM(SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))&quot;,
+      &quot;SUM(SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))))&quot;,
+      &quot;SUM(SUM(SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))&quot;,
+      &quot;SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) &gt; ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) &gt; (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0))))&quot;,
+      &quot;EAD_CUSTOMERS.SEGMENT&quot;,
+      &quot;EAD_CUSTOMERS.COUNTRY&quot;,
+      &quot;EAD_CUSTOMERS.RATING&quot;,
+      &quot;EAD_ACCOUNTS.ACCOUNT_ID&quot;,
+      &quot;IFNULL(SCALED_ROUND_INT_DIVIDE(SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))), NULLIF(SUM(SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))))), 0)), 0)&quot;,
+      &quot;(EAD_CUSTOMERS.PD_BPS) / 10000&quot;,
+      &quot;ROUND(SCALED_DECIMAL_MULTIPLY((EAD_CUSTOMERS.PD_BPS) / 10000, SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))), 4), 6)&quot;,
+      &quot;'EUR'&quot;
+    ],
+    &quot;table_name&quot;: &quot;SY29592.RISKDEMO.EAD_LGD_DEMO.EAD_OUTPUT&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;dml&quot;: {
+      &quot;number_of_rows_inserted&quot;: 100000
+    },
+    &quot;input_rows&quot;: 100000,
+    &quot;io&quot;: {
+      &quot;bytes_written&quot;: 4246528
+    },
+    &quot;output_rows&quot;: 0
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.125,
+    &quot;remote_disk_io&quot;: 0.125
+  }
+}</title>
+<rect x="1018.1" y="377.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1027.1" y="393.0" class="card-title">CreateTableAsSel…</text>
+<text x="1150.1" y="393.0" fill="#697992" font-size="9" text-anchor="end">12.5%</text>
+<text x="1027.1" y="408.0" class="card-sub">EAD_OUTPUT</text>
+<rect x="1027.1" y="416.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="1027.1" y="416.0" width="76.2" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [2]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_ACCOUNTS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 200000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.03125,
+    &quot;processing&quot;: 0.03125
+  }
+}</title>
+<rect x="1018.1" y="476.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1027.1" y="492.0" class="card-title">Join [2]</text>
+<text x="1150.1" y="492.0" fill="#697992" font-size="9" text-anchor="end">3.1%</text>
+<text x="1027.1" y="507.0" class="card-sub">INNER</text>
+<rect x="1027.1" y="515.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="1027.1" y="515.0" width="19.1" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [3]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 200000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="297.9" y="575.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="306.9" y="591.0" class="card-title">Join [3]</text>
+<text x="429.9" y="591.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="306.9" y="606.0" class="card-sub">INNER</text>
+<rect x="306.9" y="614.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [4]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;CUSTOMER_ID&quot;,
+      &quot;SEGMENT&quot;,
+      &quot;COUNTRY&quot;,
+      &quot;RATING&quot;,
+      &quot;PD_BPS&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 460800,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 100000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="82.0" y="674.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="91.0" y="690.0" class="card-title">TableScan [4]</text>
+<text x="214.0" y="690.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="91.0" y="705.0" class="card-sub">EAD_CUSTOMERS</text>
+<rect x="91.0" y="713.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [5]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;COUNT(COUNT(COUNT(1)))&quot;,
+      &quot;SUM(SUM(SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100)))&quot;,
+      &quot;SUM(SUM(SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))&quot;,
+      &quot;SUM(SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))))&quot;,
+      &quot;SUM(SUM(SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))&quot;,
+      &quot;SUM(SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) &gt; ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0))))&quot;,
+      &quot;SUM(SUM(SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) &gt; (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0))))&quot;
+    ],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNTS.CUSTOMER_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 100000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="513.8" y="674.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="522.8" y="690.0" class="card-title">Aggregate [5]</text>
+<text x="645.8" y="690.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="522.8" y="705.0" class="card-sub">EAD_ACCOUNTS.CUSTOMER_ID</text>
+<rect x="522.8" y="713.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [6]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;COUNT(COUNT(1))&quot;,
+      &quot;SUM(SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100))&quot;,
+      &quot;SUM(SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))&quot;,
+      &quot;SUM(SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))))&quot;,
+      &quot;SUM(SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))&quot;,
+      &quot;SUM(SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))))&quot;,
+      &quot;SUM(SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0)))&quot;,
+      &quot;SUM(SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) &gt; ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0)))&quot;,
+      &quot;SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0)))&quot;,
+      &quot;SUM(SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0)))&quot;,
+      &quot;SUM(SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) &gt; (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0)))&quot;
+    ],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNTS.CUSTOMER_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 174560,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="513.8" y="773.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="522.8" y="789.0" class="card-title">Aggregate [6]</text>
+<text x="645.8" y="789.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="522.8" y="804.0" class="card-sub">EAD_ACCOUNTS.CUSTOMER_ID</text>
+<rect x="522.8" y="812.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [7]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 274560,
+    &quot;output_rows&quot;: 174560
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="513.8" y="872.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="522.8" y="888.0" class="card-title">Join [7]</text>
+<text x="645.8" y="888.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="522.8" y="903.0" class="card-sub">INNER</text>
+<rect x="522.8" y="911.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [8]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;3&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 100000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="233.0" y="971.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="242.0" y="987.0" class="card-title">JoinFilter [8]</text>
+<text x="365.0" y="987.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="242.0" y="1002.0" class="card-sub">Join 3</text>
+<rect x="242.0" y="1010.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [9]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;CUSTOMER_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 231424,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 100000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="233.0" y="1070.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="242.0" y="1086.0" class="card-title">TableScan [9]</text>
+<text x="365.0" y="1086.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="242.0" y="1101.0" class="card-sub">EAD_CUSTOMERS</text>
+<rect x="242.0" y="1109.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [10]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;COUNT(1)&quot;,
+      &quot;SUM((EAD_ACCOUNTS.DRAWN_CENTS) / 100)&quot;,
+      &quot;SUM(GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))&quot;,
+      &quot;SUM(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))))&quot;,
+      &quot;SUM(LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)))&quot;,
+      &quot;SUM((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) - (LEAST(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))), GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0))))&quot;,
+      &quot;SUM(IFF((((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))) = 0, 1, 0))&quot;,
+      &quot;SUM(IFF(((EAD_ACCOUNTS.DRAWN_CENTS) / 100) &gt; ((EAD_ACCOUNTS.LIMIT_CENTS) / 100), 1, 0))&quot;,
+      &quot;SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_LINK_COUNT, 0)) = 0, 1, 0))&quot;,
+      &quot;SUM(IFF((IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.RECOVERY_EVENT_COUNT, 0)) = 0, 1, 0))&quot;,
+      &quot;SUM(IFF((GREATEST((IFNULL(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.COLLATERAL_PV, 0)) + (IFNULL(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.UNSECURED_RECOVERY_PV, 0)), 0)) &gt; (((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0)))), 1, 0))&quot;
+    ],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNTS.CUSTOMER_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 174560
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="794.5" y="971.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="803.5" y="987.0" class="card-title">Aggregate [10]</text>
+<text x="926.5" y="987.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="803.5" y="1002.0" class="card-sub">EAD_ACCOUNTS.CUSTOMER_ID</text>
+<rect x="803.5" y="1010.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [11]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;LEFT OUTER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 579991,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="794.5" y="1070.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="803.5" y="1086.0" class="card-title">Join [11]</text>
+<text x="926.5" y="1086.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="803.5" y="1101.0" class="card-sub">LEFT OUTER</text>
+<rect x="803.5" y="1109.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [12]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;SUM(ROUND(SCALED_DECIMAL_MULTIPLY(TO_NUMBER(ROUND((TO_DOUBLE(GREATEST((((EAD_COLLATERAL_ASSETS.VALUATION_CENTS) / 100) * (1 - ((EAD_COLLATERAL_ASSETS.HAIRCUT_BPS) / 10000))) - ((EAD_COLLATERAL_ASSETS.REALIZATION_COST_CENTS) / 100), 0))) / (POWER(TO_DOUBLE(1 + (500 / 10000)), TO_DOUBLE((EAD_COLLATERAL_ASSETS.MONTHS_TO_REALIZATION) / 12))), 6.0)), (EAD_ACCOUNT_COLLATERAL.ALLOCATION_WEIGHT) / SUM(EAD_ACCOUNT_COLLATERAL.ALLOCATION_WEIGHT) OVER (PARTITION BY EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID), 6), 6))&quot;,
+      &quot;COUNT(1)&quot;
+    ],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.15625,
+    &quot;processing&quot;: 0.15625
+  }
+}</title>
+<rect x="459.5" y="1169.0" width="140" height="53" rx="6" fill="#fff8e9" stroke="#d4dce7"/>
+<text x="468.5" y="1185.0" class="card-title">Aggregate [12]</text>
+<text x="591.5" y="1185.0" fill="#697992" font-size="9" text-anchor="end">15.6%</text>
+<text x="468.5" y="1200.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="468.5" y="1208.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="468.5" y="1208.0" width="95.3" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [13]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="459.5" y="1268.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="468.5" y="1284.0" class="card-title">Filter [13]</text>
+<text x="591.5" y="1284.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="468.5" y="1299.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="468.5" y="1307.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;WindowFunction [14]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;SUM(EAD_ACCOUNT_COLLATERAL.ALLOCATION_WEIGHT) OVER (PARTITION BY EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID)&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.125,
+    &quot;processing&quot;: 0.125
+  }
+}</title>
+<rect x="459.5" y="1367.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="468.5" y="1383.0" class="card-title">WindowFunction […</text>
+<text x="591.5" y="1383.0" fill="#697992" font-size="9" text-anchor="end">12.5%</text>
+<text x="468.5" y="1398.0" class="card-sub">SUM(EAD_ACCOUNT_COLLATE…</text>
+<rect x="468.5" y="1406.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="468.5" y="1406.0" width="76.2" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [15]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_COLLATERAL_ASSETS.COLLATERAL_ID = EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 539981,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="459.5" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="468.5" y="1482.0" class="card-title">Join [15]</text>
+<text x="591.5" y="1482.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="468.5" y="1497.0" class="card-sub">INNER</text>
+<rect x="468.5" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [16]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;COLLATERAL_ID&quot;,
+      &quot;VALUATION_CENTS&quot;,
+      &quot;HAIRCUT_BPS&quot;,
+      &quot;REALIZATION_COST_CENTS&quot;,
+      &quot;MONTHS_TO_REALIZATION&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 1717760,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 179994,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="384.0" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="393.0" y="1581.0" class="card-title">TableScan [16]</text>
+<text x="516.0" y="1581.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="393.0" y="1596.0" class="card-sub">EAD_COLLATERAL_ASSETS</text>
+<rect x="393.0" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [17]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;15&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="535.0" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="544.0" y="1581.0" class="card-title">JoinFilter [17]</text>
+<text x="667.0" y="1581.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="544.0" y="1596.0" class="card-sub">Join 15</text>
+<rect x="544.0" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [18]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;ACCOUNT_ID&quot;,
+      &quot;COLLATERAL_ID&quot;,
+      &quot;ALLOCATION_WEIGHT&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 1764352,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 359987,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="535.0" y="1664.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="544.0" y="1680.0" class="card-title">TableScan [18]</text>
+<text x="667.0" y="1680.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="544.0" y="1695.0" class="card-sub">EAD_ACCOUNT_COLLATERAL</text>
+<rect x="544.0" y="1703.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [19]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;LEFT OUTER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 589648,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1129.6" y="1169.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1138.6" y="1185.0" class="card-title">Join [19]</text>
+<text x="1261.6" y="1185.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1138.6" y="1200.0" class="card-sub">LEFT OUTER</text>
+<rect x="1138.6" y="1208.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [20]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;SUM(TO_NUMBER(ROUND((TO_DOUBLE((EAD_EXPECTED_RECOVERIES.RECOVERY_CENTS - (EAD_EXPECTED_RECOVERIES.COST_CENTS)) / 100)) / (POWER(TO_DOUBLE(1 + ((EAD_ACCOUNTS.DISCOUNT_BPS) / 10000)), TO_DOUBLE((EAD_EXPECTED_RECOVERIES.MONTHS_TO_RECOVERY) / 12))), 6.0)))&quot;,
+      &quot;COUNT(1)&quot;
+    ],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_EXPECTED_RECOVERIES.ACCOUNT_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 579292,
+    &quot;output_rows&quot;: 289648
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.125,
+    &quot;processing&quot;: 0.125
+  }
+}</title>
+<rect x="969.1" y="1268.0" width="140" height="53" rx="6" fill="#fff8e9" stroke="#d4dce7"/>
+<text x="978.1" y="1284.0" class="card-title">Aggregate [20]</text>
+<text x="1101.1" y="1284.0" fill="#697992" font-size="9" text-anchor="end">12.5%</text>
+<text x="978.1" y="1299.0" class="card-sub">EAD_EXPECTED_RECOVERIES…</text>
+<rect x="978.1" y="1307.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="978.1" y="1307.0" width="76.2" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [21]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_ACCOUNTS.ACCOUNT_ID = EAD_EXPECTED_RECOVERIES.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 879292,
+    &quot;output_rows&quot;: 579292
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.125,
+    &quot;processing&quot;: 0.125
+  }
+}</title>
+<rect x="969.1" y="1367.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="978.1" y="1383.0" class="card-title">Join [21]</text>
+<text x="1101.1" y="1383.0" fill="#697992" font-size="9" text-anchor="end">12.5%</text>
+<text x="978.1" y="1398.0" class="card-sub">INNER</text>
+<rect x="978.1" y="1406.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="978.1" y="1406.0" width="76.2" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [22]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 400000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="799.2" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="808.2" y="1482.0" class="card-title">Join [22]</text>
+<text x="931.2" y="1482.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="808.2" y="1497.0" class="card-sub">INNER</text>
+<rect x="808.2" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [23]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;CUSTOMER_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 231424,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 100000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="686.0" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="695.0" y="1581.0" class="card-title">TableScan [23]</text>
+<text x="818.0" y="1581.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="695.0" y="1596.0" class="card-sub">EAD_CUSTOMERS</text>
+<rect x="695.0" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [24]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;LEFT OUTER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 579991,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.03125,
+    &quot;processing&quot;: 0.03125
+  }
+}</title>
+<rect x="912.5" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="921.5" y="1581.0" class="card-title">Join [24]</text>
+<text x="1044.5" y="1581.0" fill="#697992" font-size="9" text-anchor="end">3.1%</text>
+<text x="921.5" y="1596.0" class="card-sub">LEFT OUTER</text>
+<rect x="921.5" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="921.5" y="1604.0" width="19.1" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [25]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="837.0" y="1664.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="846.0" y="1680.0" class="card-title">Filter [25]</text>
+<text x="969.0" y="1680.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="846.0" y="1695.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="846.0" y="1703.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Buffer [26]&quot;,
+  &quot;attributes&quot;: {},
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="960.0" y="2138.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="969.0" y="2154.0" class="card-title">Buffer [26]</text>
+<text x="1092.0" y="2154.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="969.0" y="2169.0" class="card-sub"></text>
+<rect x="969.0" y="2177.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Split [27]&quot;,
+  &quot;attributes&quot;: {},
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="290.0" y="2138.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="299.0" y="2154.0" class="card-title">Split [27]</text>
+<text x="422.0" y="2154.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="299.0" y="2169.0" class="card-sub"></text>
+<rect x="299.0" y="2177.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [28]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="290.0" y="2237.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="299.0" y="2253.0" class="card-title">Aggregate [28]</text>
+<text x="422.0" y="2253.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="299.0" y="2268.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="299.0" y="2276.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [29]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="290.0" y="2336.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="299.0" y="2352.0" class="card-title">Aggregate [29]</text>
+<text x="422.0" y="2352.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="299.0" y="2367.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="299.0" y="2375.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [30]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_COLLATERAL_ASSETS.COLLATERAL_ID = EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID)&quot;,
+    &quot;join_type&quot;: &quot;SEMI&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 539981,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="290.0" y="2435.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="299.0" y="2451.0" class="card-title">Join [30]</text>
+<text x="422.0" y="2451.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="299.0" y="2466.0" class="card-sub">SEMI</text>
+<rect x="299.0" y="2474.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [31]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_COLLATERAL_ASSETS.COLLATERAL_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 179994,
+    &quot;output_rows&quot;: 179994
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="210.0" y="2534.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="219.0" y="2550.0" class="card-title">Aggregate [31]</text>
+<text x="342.0" y="2550.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="219.0" y="2565.0" class="card-sub">EAD_COLLATERAL_ASSETS.C…</text>
+<rect x="219.0" y="2573.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [32]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;COLLATERAL_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 425984,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 179994,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="210.0" y="2633.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="219.0" y="2649.0" class="card-title">TableScan [32]</text>
+<text x="342.0" y="2649.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="219.0" y="2664.0" class="card-sub">EAD_COLLATERAL_ASSETS</text>
+<rect x="219.0" y="2672.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [33]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID&quot;,
+      &quot;EAD_ACCOUNT_COLLATERAL.COLLATERAL_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="370.0" y="2534.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="379.0" y="2550.0" class="card-title">Aggregate [33]</text>
+<text x="502.0" y="2550.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="379.0" y="2565.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="379.0" y="2573.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [34]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="370.0" y="2633.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="379.0" y="2649.0" class="card-title">Filter [34]</text>
+<text x="502.0" y="2649.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="379.0" y="2664.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="379.0" y="2672.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [35]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;30&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 359987,
+    &quot;output_rows&quot;: 359987
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="370.0" y="2732.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="379.0" y="2748.0" class="card-title">JoinFilter [35]</text>
+<text x="502.0" y="2748.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="379.0" y="2763.0" class="card-sub">Join 30</text>
+<rect x="379.0" y="2771.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [36]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;ACCOUNT_ID&quot;,
+      &quot;COLLATERAL_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 1682432,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 359987,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="370.0" y="2831.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="379.0" y="2847.0" class="card-title">TableScan [36]</text>
+<text x="502.0" y="2847.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="379.0" y="2862.0" class="card-sub">EAD_ACCOUNT_COLLATERAL</text>
+<rect x="379.0" y="2870.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [37]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;EAD_ACCOUNTS.ACCOUNT_ID IS NOT NULL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="988.0" y="1664.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="997.0" y="1680.0" class="card-title">Filter [37]</text>
+<text x="1120.0" y="1680.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="997.0" y="1695.0" class="card-sub">EAD_ACCOUNTS.ACCOUNT_ID…</text>
+<rect x="997.0" y="1703.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [38]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;22&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="988.0" y="1763.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="997.0" y="1779.0" class="card-title">JoinFilter [38]</text>
+<text x="1120.0" y="1779.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="997.0" y="1794.0" class="card-sub">Join 22</text>
+<rect x="997.0" y="1802.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [39]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;ACCOUNT_ID&quot;,
+      &quot;CUSTOMER_ID&quot;,
+      &quot;DISCOUNT_BPS&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 1753088,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 300000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="988.0" y="1862.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="997.0" y="1878.0" class="card-title">TableScan [39]</text>
+<text x="1120.0" y="1878.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="997.0" y="1893.0" class="card-sub">EAD_ACCOUNTS</text>
+<rect x="997.0" y="1901.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [40]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;(EAD_EXPECTED_RECOVERIES.ACCOUNT_ID IS NOT NULL) AND (ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST) = 1)&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 585266,
+    &quot;output_rows&quot;: 579292
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1139.0" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1148.0" y="1482.0" class="card-title">Filter [40]</text>
+<text x="1271.0" y="1482.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1148.0" y="1497.0" class="card-sub">(EAD_EXPECTED_RECOVERIE…</text>
+<rect x="1148.0" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [41]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;21&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 585266,
+    &quot;output_rows&quot;: 585266
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1139.0" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1148.0" y="1581.0" class="card-title">JoinFilter [41]</text>
+<text x="1271.0" y="1581.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1148.0" y="1596.0" class="card-sub">Join 21</text>
+<rect x="1148.0" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;WindowFunction [42]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST)&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 585266,
+    &quot;output_rows&quot;: 585266
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1139.0" y="1664.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1148.0" y="1680.0" class="card-title">WindowFunction […</text>
+<text x="1271.0" y="1680.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1148.0" y="1695.0" class="card-sub">ROW_NUMBER() OVER (PART…</text>
+<rect x="1148.0" y="1703.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [43]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;RECOVERY_EVENT_ID&quot;,
+      &quot;VERSION&quot;,
+      &quot;ACCOUNT_ID&quot;,
+      &quot;RECOVERY_CENTS&quot;,
+      &quot;COST_CENTS&quot;,
+      &quot;MONTHS_TO_RECOVERY&quot;,
+      &quot;REVISION_ORDER&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 5854208,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 585266,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1139.0" y="1763.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1148.0" y="1779.0" class="card-title">TableScan [43]</text>
+<text x="1271.0" y="1779.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1148.0" y="1794.0" class="card-sub">EAD_EXPECTED_RECOVERIES</text>
+<rect x="1148.0" y="1802.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [44]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;7&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.03125,
+    &quot;processing&quot;: 0.03125
+  }
+}</title>
+<rect x="1290.0" y="1268.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1299.0" y="1284.0" class="card-title">JoinFilter [44]</text>
+<text x="1422.0" y="1284.0" fill="#697992" font-size="9" text-anchor="end">3.1%</text>
+<text x="1299.0" y="1299.0" class="card-sub">Join 7</text>
+<rect x="1299.0" y="1307.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="1299.0" y="1307.0" width="19.1" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [45]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;ACCOUNT_ID&quot;,
+      &quot;CUSTOMER_ID&quot;,
+      &quot;PRODUCT_TYPE&quot;,
+      &quot;DRAWN_CENTS&quot;,
+      &quot;LIMIT_CENTS&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 3369472,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 300000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1290.0" y="1367.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1299.0" y="1383.0" class="card-title">TableScan [45]</text>
+<text x="1422.0" y="1383.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1299.0" y="1398.0" class="card-sub">EAD_ACCOUNTS</text>
+<rect x="1299.0" y="1406.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [46]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;ROW_NUMBER() OVER (PARTITION BY EAD_ACCOUNTS.CUSTOMER_ID ORDER BY ((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))) DESC NULLS LAST, EAD_ACCOUNTS.ACCOUNT_ID ASC NULLS FIRST) = 1&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 100000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1738.3" y="575.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1747.3" y="591.0" class="card-title">Filter [46]</text>
+<text x="1870.3" y="591.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1747.3" y="606.0" class="card-sub">ROW_NUMBER() OVER (PART…</text>
+<rect x="1747.3" y="614.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;WindowFunction [47]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;ROW_NUMBER() OVER (PARTITION BY EAD_ACCOUNTS.CUSTOMER_ID ORDER BY ((EAD_ACCOUNTS.DRAWN_CENTS) / 100) + ((CASE EAD_ACCOUNTS.PRODUCT_TYPE WHEN 'REVOLVING' THEN 0.5 WHEN 'TERM' THEN 0.75 WHEN 'MORTGAGE' THEN 1 ELSE null END) * (GREATEST(((EAD_ACCOUNTS.LIMIT_CENTS) / 100) - ((EAD_ACCOUNTS.DRAWN_CENTS) / 100), 0))) DESC NULLS LAST, EAD_ACCOUNTS.ACCOUNT_ID ASC NULLS FIRST)&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.09375,
+    &quot;processing&quot;: 0.09375
+  }
+}</title>
+<rect x="1738.3" y="674.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1747.3" y="690.0" class="card-title">WindowFunction […</text>
+<text x="1870.3" y="690.0" fill="#697992" font-size="9" text-anchor="end">9.4%</text>
+<text x="1747.3" y="705.0" class="card-sub">ROW_NUMBER() OVER (PART…</text>
+<rect x="1747.3" y="713.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="1747.3" y="713.0" width="57.2" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [48]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)&quot;,
+    &quot;join_type&quot;: &quot;INNER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 400000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1738.3" y="773.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1747.3" y="789.0" class="card-title">Join [48]</text>
+<text x="1870.3" y="789.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1747.3" y="804.0" class="card-sub">INNER</text>
+<rect x="1747.3" y="812.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [49]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;2&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 100000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1441.0" y="872.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1450.0" y="888.0" class="card-title">JoinFilter [49]</text>
+<text x="1573.0" y="888.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1450.0" y="903.0" class="card-sub">Join 2</text>
+<rect x="1450.0" y="911.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [50]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;CUSTOMER_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 231424,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 100000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1441.0" y="971.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1450.0" y="987.0" class="card-title">TableScan [50]</text>
+<text x="1573.0" y="987.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1450.0" y="1002.0" class="card-sub">EAD_CUSTOMERS</text>
+<rect x="1450.0" y="1010.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [51]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;LEFT OUTER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 579991,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2035.6" y="872.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2044.6" y="888.0" class="card-title">Join [51]</text>
+<text x="2167.6" y="888.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2044.6" y="903.0" class="card-sub">LEFT OUTER</text>
+<rect x="2044.6" y="911.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Buffer [52]&quot;,
+  &quot;attributes&quot;: {},
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1190.0" y="2138.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1199.0" y="2154.0" class="card-title">Buffer [52]</text>
+<text x="1322.0" y="2154.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1199.0" y="2169.0" class="card-sub"></text>
+<rect x="1199.0" y="2177.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [53]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(SNOWPARK_TEMP_TABLE_XDOQYQJSGUSMTK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;LEFT OUTER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 589648,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2035.6" y="971.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2044.6" y="987.0" class="card-title">Join [53]</text>
+<text x="2167.6" y="987.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2044.6" y="1002.0" class="card-sub">LEFT OUTER</text>
+<rect x="2044.6" y="1010.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [54]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_EXPECTED_RECOVERIES.ACCOUNT_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 289648,
+    &quot;output_rows&quot;: 289648
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1875.1" y="1070.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1884.1" y="1086.0" class="card-title">Aggregate [54]</text>
+<text x="2007.1" y="1086.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1884.1" y="1101.0" class="card-sub">EAD_EXPECTED_RECOVERIES…</text>
+<rect x="1884.1" y="1109.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [55]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_ACCOUNTS.ACCOUNT_ID = EAD_EXPECTED_RECOVERIES.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;SEMI&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 879225,
+    &quot;output_rows&quot;: 289648
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.03125,
+    &quot;processing&quot;: 0.03125
+  }
+}</title>
+<rect x="1875.1" y="1169.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1884.1" y="1185.0" class="card-title">Join [55]</text>
+<text x="2007.1" y="1185.0" fill="#697992" font-size="9" text-anchor="end">3.1%</text>
+<text x="1884.1" y="1200.0" class="card-sub">SEMI</text>
+<rect x="1884.1" y="1208.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="1884.1" y="1208.0" width="19.1" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [56]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(EAD_CUSTOMERS.CUSTOMER_ID = EAD_ACCOUNTS.CUSTOMER_ID)&quot;,
+    &quot;join_type&quot;: &quot;SEMI&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 400000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1705.2" y="1268.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1714.2" y="1284.0" class="card-title">Join [56]</text>
+<text x="1837.2" y="1284.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1714.2" y="1299.0" class="card-sub">SEMI</text>
+<rect x="1714.2" y="1307.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [57]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_CUSTOMERS.CUSTOMER_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 100000,
+    &quot;output_rows&quot;: 100000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1592.0" y="1367.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1601.0" y="1383.0" class="card-title">Aggregate [57]</text>
+<text x="1724.0" y="1383.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1601.0" y="1398.0" class="card-sub">EAD_CUSTOMERS.CUSTOMER_…</text>
+<rect x="1601.0" y="1406.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [58]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;CUSTOMER_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 231424,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 100000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1592.0" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1601.0" y="1482.0" class="card-title">TableScan [58]</text>
+<text x="1724.0" y="1482.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1601.0" y="1497.0" class="card-sub">EAD_CUSTOMERS</text>
+<rect x="1601.0" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Join [59]&quot;,
+  &quot;attributes&quot;: {
+    &quot;equality_join_condition&quot;: &quot;(SNOWPARK_TEMP_TABLE_ORVFJRWEGSM6EK8.ACCOUNT_ID = EAD_ACCOUNTS.ACCOUNT_ID)&quot;,
+    &quot;join_type&quot;: &quot;LEFT OUTER&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 579991,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1818.5" y="1367.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1827.5" y="1383.0" class="card-title">Join [59]</text>
+<text x="1950.5" y="1383.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1827.5" y="1398.0" class="card-sub">LEFT OUTER</text>
+<rect x="1827.5" y="1406.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [60]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;EAD_ACCOUNT_COLLATERAL.ACCOUNT_ID IS NOT NULL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1743.0" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1752.0" y="1482.0" class="card-title">Filter [60]</text>
+<text x="1875.0" y="1482.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1752.0" y="1497.0" class="card-sub">EAD_ACCOUNT_COLLATERAL.…</text>
+<rect x="1752.0" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Buffer [61]&quot;,
+  &quot;attributes&quot;: {},
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 279991,
+    &quot;output_rows&quot;: 279991
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1420.0" y="2138.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1429.0" y="2154.0" class="card-title">Buffer [61]</text>
+<text x="1552.0" y="2154.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1429.0" y="2169.0" class="card-sub"></text>
+<rect x="1429.0" y="2177.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [62]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;EAD_ACCOUNTS.ACCOUNT_ID IS NOT NULL&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1894.0" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1903.0" y="1482.0" class="card-title">Filter [62]</text>
+<text x="2026.0" y="1482.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1903.0" y="1497.0" class="card-sub">EAD_ACCOUNTS.ACCOUNT_ID…</text>
+<rect x="1903.0" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [63]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;56&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1894.0" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1903.0" y="1581.0" class="card-title">JoinFilter [63]</text>
+<text x="2026.0" y="1581.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1903.0" y="1596.0" class="card-sub">Join 56</text>
+<rect x="1903.0" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [64]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;ACCOUNT_ID&quot;,
+      &quot;CUSTOMER_ID&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 1372160,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 300000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="1894.0" y="1664.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="1903.0" y="1680.0" class="card-title">TableScan [64]</text>
+<text x="2026.0" y="1680.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="1903.0" y="1695.0" class="card-sub">EAD_ACCOUNTS</text>
+<rect x="1903.0" y="1703.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Aggregate [65]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [],
+    &quot;grouping_keys&quot;: [
+      &quot;EAD_EXPECTED_RECOVERIES.ACCOUNT_ID&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 579292,
+    &quot;output_rows&quot;: 579225
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2045.0" y="1268.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2054.0" y="1284.0" class="card-title">Aggregate [65]</text>
+<text x="2177.0" y="1284.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2054.0" y="1299.0" class="card-sub">EAD_EXPECTED_RECOVERIES…</text>
+<rect x="2054.0" y="1307.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;Filter [66]&quot;,
+  &quot;attributes&quot;: {
+    &quot;filter_condition&quot;: &quot;(EAD_EXPECTED_RECOVERIES.ACCOUNT_ID IS NOT NULL) AND (ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST) = 1)&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 585266,
+    &quot;output_rows&quot;: 579292
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2045.0" y="1367.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2054.0" y="1383.0" class="card-title">Filter [66]</text>
+<text x="2177.0" y="1383.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2054.0" y="1398.0" class="card-sub">(EAD_EXPECTED_RECOVERIE…</text>
+<rect x="2054.0" y="1406.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [67]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;55&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 585266,
+    &quot;output_rows&quot;: 585266
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.03125,
+    &quot;processing&quot;: 0.03125
+  }
+}</title>
+<rect x="2045.0" y="1466.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2054.0" y="1482.0" class="card-title">JoinFilter [67]</text>
+<text x="2177.0" y="1482.0" fill="#697992" font-size="9" text-anchor="end">3.1%</text>
+<text x="2054.0" y="1497.0" class="card-sub">Join 55</text>
+<rect x="2054.0" y="1505.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="2054.0" y="1505.0" width="19.1" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;WindowFunction [68]&quot;,
+  &quot;attributes&quot;: {
+    &quot;functions&quot;: [
+      &quot;ROW_NUMBER() OVER (PARTITION BY EAD_EXPECTED_RECOVERIES.RECOVERY_EVENT_ID ORDER BY EAD_EXPECTED_RECOVERIES.VERSION DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.REVISION_ORDER DESC NULLS LAST, EAD_EXPECTED_RECOVERIES.ACCOUNT_ID ASC NULLS FIRST)&quot;
+    ]
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 585266,
+    &quot;output_rows&quot;: 585266
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0625,
+    &quot;processing&quot;: 0.0625
+  }
+}</title>
+<rect x="2045.0" y="1565.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2054.0" y="1581.0" class="card-title">WindowFunction […</text>
+<text x="2177.0" y="1581.0" fill="#697992" font-size="9" text-anchor="end">6.2%</text>
+<text x="2054.0" y="1596.0" class="card-sub">ROW_NUMBER() OVER (PART…</text>
+<rect x="2054.0" y="1604.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+<rect x="2054.0" y="1604.0" width="38.1" height="4" rx="2" fill="#3788f8"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [69]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;RECOVERY_EVENT_ID&quot;,
+      &quot;VERSION&quot;,
+      &quot;ACCOUNT_ID&quot;,
+      &quot;REVISION_ORDER&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 3019776,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 585266,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2045.0" y="1664.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2054.0" y="1680.0" class="card-title">TableScan [69]</text>
+<text x="2177.0" y="1680.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2054.0" y="1695.0" class="card-sub">EAD_EXPECTED_RECOVERIES</text>
+<rect x="2054.0" y="1703.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;JoinFilter [70]&quot;,
+  &quot;attributes&quot;: {
+    &quot;join_id&quot;: &quot;48&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;input_rows&quot;: 300000,
+    &quot;output_rows&quot;: 300000
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2196.0" y="1070.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2205.0" y="1086.0" class="card-title">JoinFilter [70]</text>
+<text x="2328.0" y="1086.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2205.0" y="1101.0" class="card-sub">Join 48</text>
+<rect x="2205.0" y="1109.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<g><title>{
+  &quot;operator&quot;: &quot;TableScan [71]&quot;,
+  &quot;attributes&quot;: {
+    &quot;columns&quot;: [
+      &quot;ACCOUNT_ID&quot;,
+      &quot;CUSTOMER_ID&quot;,
+      &quot;PRODUCT_TYPE&quot;,
+      &quot;DRAWN_CENTS&quot;,
+      &quot;LIMIT_CENTS&quot;
+    ],
+    &quot;table_name&quot;: &quot;RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS&quot;
+  },
+  &quot;statistics&quot;: {
+    &quot;io&quot;: {
+      &quot;bytes_scanned&quot;: 3369472,
+      &quot;percentage_scanned_from_cache&quot;: 1,
+      &quot;scan_progress&quot;: 1
+    },
+    &quot;output_rows&quot;: 300000,
+    &quot;pruning&quot;: {
+      &quot;partitions_scanned&quot;: 1,
+      &quot;partitions_total&quot;: 1
+    }
+  },
+  &quot;execution_time_breakdown&quot;: {
+    &quot;overall_percentage&quot;: 0.0
+  }
+}</title>
+<rect x="2196.0" y="1169.0" width="140" height="53" rx="6" fill="#ffffff" stroke="#d4dce7"/>
+<text x="2205.0" y="1185.0" class="card-title">TableScan [71]</text>
+<text x="2328.0" y="1185.0" fill="#697992" font-size="9" text-anchor="end">0.0%</text>
+<text x="2205.0" y="1200.0" class="card-sub">EAD_ACCOUNTS</text>
+<rect x="2205.0" y="1208.0" width="122" height="4" rx="2" fill="#e1e7ef"/>
+</g>
+<rect x="2370" y="259" width="800" height="665" rx="18" fill="#ffffff" stroke="#d6dee8" stroke-width="1.5"/>
+<text x="2415" y="320" class="section">Most expensive nodes (7 of 72)</text>
+<line x1="2413" y1="411" x2="3127" y2="411" stroke="#dce3ec"/>
+<text x="2415" y="388" class="side-row">Aggregate [12]</text>
+<text x="3124" y="388" class="side-value" text-anchor="end">15.6%</text>
+<line x1="2413" y1="485" x2="3127" y2="485" stroke="#dce3ec"/>
+<text x="2415" y="462" class="side-row">CreateTableAsSelect [1]</text>
+<text x="3124" y="462" class="side-value" text-anchor="end">12.5%</text>
+<line x1="2413" y1="559" x2="3127" y2="559" stroke="#dce3ec"/>
+<text x="2415" y="536" class="side-row">WindowFunction [14]</text>
+<text x="3124" y="536" class="side-value" text-anchor="end">12.5%</text>
+<line x1="2413" y1="633" x2="3127" y2="633" stroke="#dce3ec"/>
+<text x="2415" y="610" class="side-row">Aggregate [20]</text>
+<text x="3124" y="610" class="side-value" text-anchor="end">12.5%</text>
+<line x1="2413" y1="707" x2="3127" y2="707" stroke="#dce3ec"/>
+<text x="2415" y="684" class="side-row">Join [21]</text>
+<text x="3124" y="684" class="side-value" text-anchor="end">12.5%</text>
+<line x1="2413" y1="781" x2="3127" y2="781" stroke="#dce3ec"/>
+<text x="2415" y="758" class="side-row">WindowFunction [47]</text>
+<text x="3124" y="758" class="side-value" text-anchor="end">9.4%</text>
+<line x1="2413" y1="855" x2="3127" y2="855" stroke="#dce3ec"/>
+<text x="2415" y="832" class="side-row">WindowFunction [68]</text>
+<text x="3124" y="832" class="side-value" text-anchor="end">6.2%</text>
+<rect x="2370" y="958" width="800" height="435" rx="18" fill="#ffffff" stroke="#d6dee8" stroke-width="1.5"/>
+<text x="2415" y="1019" class="section">Profile overview · Step 2</text>
+<rect x="2415" y="1067" width="710" height="15" rx="7.5" fill="#f59f4b"/>
+<path d="M 2422.5 1067 H 3014.0625 V 1082 H 2422.5 A 7.5 7.5 0 0 1 2415 1074.5 A 7.5 7.5 0 0 1 2422.5 1067" fill="#4287f7"/>
+<rect x="3014.1" y="1067" width="88.8" height="15" fill="#20c6cf"/>
+<circle cx="2421" cy="1134" r="5" fill="#4287f7"/>
+<text x="2437" y="1140" class="side-row">Processing</text>
+<text x="3125" y="1140" class="side-value" text-anchor="end">84.4%</text>
+<circle cx="2421" cy="1204" r="5" fill="#20c6cf"/>
+<text x="2437" y="1210" class="side-row">Remote disk I/O</text>
+<text x="3125" y="1210" class="side-value" text-anchor="end">12.5%</text>
+<circle cx="2421" cy="1274" r="5" fill="#f59f4b"/>
+<text x="2437" y="1280" class="side-row">Unattributed</text>
+<text x="3125" y="1280" class="side-value" text-anchor="end">3.1%</text>
+<rect x="2370" y="1428" width="800" height="334" rx="18" fill="#ffffff" stroke="#d6dee8" stroke-width="1.5"/>
+<text x="2415" y="1489" class="section">Statistics</text>
+<line x1="2414" y1="1562" x2="3126" y2="1562" stroke="#dce3ec"/>
+<text x="2415" y="1540" class="side-row">Rows inserted</text>
+<text x="3125" y="1540" class="side-value" text-anchor="end">100,000</text>
+<line x1="2414" y1="1634" x2="3126" y2="1634" stroke="#dce3ec"/>
+<text x="2415" y="1612" class="side-row">Step 1</text>
+<text x="3125" y="1612" class="side-value" text-anchor="end">CREATE TABLE [0]</text>
+<line x1="2414" y1="1706" x2="3126" y2="1706" stroke="#dce3ec"/>
+<text x="2415" y="1684" class="side-row">Profile status</text>
+<text x="3125" y="1684" class="side-value" text-anchor="end">Verified</text>
+<text x="2415" y="1830" fill="#697992" font-size="16">Source: query-profile.json · GET_QUERY_OPERATOR_STATS</text>
+<text x="2415" y="1860" fill="#697992" font-size="15">Hover over a node for its full saved attributes and statistics.</text>
+</svg>

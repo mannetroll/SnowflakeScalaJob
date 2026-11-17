@@ -23,7 +23,7 @@ object ReferenceCohort {
 }
 
 final class ResultValidator(session: Session, connection: ConnectionConfig, profiler: QueryProfiler,
-    registry: ObjectRegistry, runId: String, dir: Path, expectedExecutions: Set[String]) {
+    registry: ObjectRegistry, dir: Path, expectedExecutions: Set[String]) {
   private val checks = ArrayBuffer.empty[Map[String, Any]]
   private var validatedExecutions = Set.empty[String]
   private var correctnessComplete = false
@@ -40,7 +40,7 @@ final class ResultValidator(session: Session, connection: ConnectionConfig, prof
   }
   private def zero(label: String, sql: String): Unit = check(label, Sql.scalar(session, sql))
   private def view(result: JobResult, label: String, df: DataFrame): String = {
-    val name = connection.qualified(s"EAD_${runId}_${result.execution}_CHECK_$label")
+    val name = connection.qualified(s"EAD_${result.execution}_CHECK_$label")
     df.createOrReplaceTempView(name)
     registry.add("VIEW", name)
     name

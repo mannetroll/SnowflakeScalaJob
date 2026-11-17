@@ -4,7 +4,7 @@ import java.nio.file.Path
 import com.snowflake.snowpark.{DataFrame, HasCachedResult, Session, Window}
 import com.snowflake.snowpark.functions._
 
-final case class JobInput(loaded: LoadedInputs, config: DemoConfig, runId: String, execution: String)
+final case class JobInput(loaded: LoadedInputs, config: DemoConfig, execution: String)
 final case class JobResult(finalTable: String, execution: String,
     cp1: HasCachedResult, cp2: HasCachedResult, cp3: HasCachedResult,
     allocations: DataFrame, collateralAccounts: DataFrame, deduplicatedRecoveries: DataFrame,
@@ -98,17 +98,21 @@ final class EadLgdJob(session: Session, connection: ConnectionConfig,
       .withColumn("SYNTHETIC_PD", sqlExpr("CAST(PD_BPS / 10000.0 AS NUMBER(18,10))"))
       .withColumn("ILLUSTRATIVE_EXPECTED_LOSS", sqlExpr("CAST(ROUND(SYNTHETIC_PD * LGD_AMOUNT, 6) AS NUMBER(24,6))"))
       .withColumn("CURRENCY", lit("EUR")).drop("PD_BPS")
-    val view = connection.qualified(s"EAD_${input.runId}_${execution}_FINAL_VIEW")
+    val view = connection.qualified(s"EAD_${execution}_FINAL_VIEW")
     finalDf.createOrReplaceTempView(view)
     registry.add("VIEW", view)
-    val output = connection.qualified(s"EAD_${input.runId}_${execution}_OUTPUT")
+    val output = connection.qualified(if (execution == "E1") "EAD_OUTPUT" else s"EAD_${execution}_OUTPUT")
     val sql = s"CREATE TRANSIENT TABLE $output AS SELECT * FROM $view"
     Json.writeText(dir.resolve(s"sql/$execution-executed-ctas.sql"), sql + ";\n")
     val combinedPath = dir.resolve("sql/executed-ctas.sql")
     val existing = if (java.nio.file.Files.exists(combinedPath)) new String(java.nio.file.Files.readAllBytes(combinedPath), java.nio.charset.StandardCharsets.UTF_8) else ""
     Json.writeText(combinedPath, existing + s"-- $execution\n$sql;\n")
     profiler.finalCtas(sql, output, config.customerCount)
-    TableLineage.write(loaded, output, execution, dir)
+    val finalProfile = profiler.phases.last.profiles.headOption.filter(_("verified") == true).map { evidence =>
+      val document = Json.mapper.readTree(java.nio.file.Paths.get(evidence("artifact").toString).toFile)
+      QueryProfileGraphml.parse(document.get("queryId").asText(), document)
+    }
+    TableLineage.write(loaded, output, execution, dir, finalProfile)
     JobResult(output, execution, cp1, cp2, cp3, allocations, collateralAccounts, deduplicated,
       accountRecoveries, profiler.phases.filter(_.execution == execution), dir)
   }

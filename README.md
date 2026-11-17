@@ -60,15 +60,18 @@ for `nodes.csv` and `relationships.csv`.
 
 ## Six-table lineage example
 
-A single execution creates five named transient source tables (CUSTOMERS,
-ACCOUNTS, COLLATERAL_ASSETS, ACCOUNT_COLLATERAL and EXPECTED_RECOVERIES) and
-one transient customer OUTPUT table. All five sources contribute to OUTPUT.
+A single execution creates five named transient source tables (`EAD_CUSTOMERS`,
+`EAD_ACCOUNTS`, `EAD_COLLATERAL_ASSETS`, `EAD_ACCOUNT_COLLATERAL` and
+`EAD_EXPECTED_RECOVERIES`) and one transient customer table, `EAD_OUTPUT`.
+All five sources contribute to `EAD_OUTPUT`.
 The three temporary checkpoint caches are diagnostic snapshots.
 
 Run the single-run command above with `KEEP_OBJECTS=true` to retain all six
 tables after the session ends. The determinism suite retains seven tables:
 five shared inputs and two outputs. With `KEEP_OBJECTS=false`, cleanup removes
-all run tables. The generated `sql/cleanup.sql` drops exact run objects.
+all demo tables. The generated `sql/cleanup.sql` drops exact demo objects.
+Run that cleanup before starting another retained execution with the same fixed
+table names.
 
 Each run writes `E1-expected-table-lineage.json` and
 `E1-expected-table-lineage.graphml` with six table nodes and five
@@ -77,6 +80,12 @@ run names. Execute that worksheet to retrieve observed table lineage and
 column lineage for TOTAL_EAD and LGD_AMOUNT. The expected manifest is a
 dependency specification, not evidence returned by Snowflake. Open the GraphML
 in yEd to view the expected six-node graph.
+
+When final CTAS operator statistics are available, the run also writes
+`E1-profile-table-lineage.json` and `.graphml`. These identify the five named
+tables actually scanned by the final CTAS and connect them to its output. The
+edges are inferred from that query plan, not returned by Snowflake's lineage
+service.
 
 [GET_LINEAGE](https://docs.snowflake.com/en/sql-reference/functions/get_lineage-snowflake-core)
 requires Enterprise Edition or higher and the appropriate lineage privileges.
@@ -297,13 +306,13 @@ benchmarks.
 Default scale: 100,000 customers, 300,000 accounts, about 180,000 assets, 360,000
 links and 585,000 recovery rows (about 600,000). Stable keyed generation uses a
 fixed seed, deterministic IDs and order; wall-clock time never affects business
-values. UUIDs isolate operational run names. The first four customers form a
+values. Demo objects use fixed names in the configured schema. The first four customers form a
 fixed, independently calculable cohort. See [schemas and keys](docs/input-schema.md)
 and [model, rounding and reference cohort](docs/model.md).
 
-Five files are generated under `build/ead-lgd/<run-id>/input/`. Their manifest
+Five files are generated under `build/ead-lgd/DEMO/input/`. Their manifest
 records schemas, nullability, row counts, sizes and SHA-256 hashes. Every file is
-uploaded into a run-specific internal-stage path, then loaded into explicit NOT
+uploaded into the temporary internal stage, then loaded into explicit NOT
 NULL transient landing tables. COPY uses exact filenames, case-sensitive column matching
 and `ON_ERROR=ABORT_STATEMENT`, without a COPY SELECT transformation. PUT/COPY
 results, actual counts, nulls, physical keys, foreign keys, domains and
@@ -476,7 +485,7 @@ and [GET](https://docs.snowflake.com/en/sql-reference/sql/get) documentation.
 
 ## Artifacts and lifecycle
 
-Live run artifacts under `build/ead-lgd/<run-id>/`:
+Live run artifacts under `build/ead-lgd/DEMO/`:
 
 ```text
 input/*.parquet
@@ -486,6 +495,8 @@ query-manifest.json
 profiles/E1-<phase>-<query-id>.json     # E2 also present in determinism suite
 E1-expected-table-lineage.json          # six expected table nodes and five edges
 E1-expected-table-lineage.graphml       # yEd view of expected table lineage
+E1-profile-table-lineage.json           # source tables observed in final CTAS profile
+E1-profile-table-lineage.graphml        # yEd view of profile-derived dependencies
 sql/executed-ctas.sql                 # actual CTAS statement(s)
 sql/E1-executed-ctas.sql               # E2 also present in determinism suite
 sql/E1-inspect-lineage.sql              # observed table and column lineage query

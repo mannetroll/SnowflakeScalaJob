@@ -19,11 +19,11 @@ object DemoRunner {
         val registry = new ObjectRegistry(session, dir, config.keepObjects)
         Lifecycle.protecting {
           val profiler = new QueryProfiler(session, connection, runId, dir, registry, executions.toSet)
-          val inputs = new InputLoader(session, connection, profiler, registry, runId, dir).load(manifest)
+          val inputs = new InputLoader(session, connection, profiler, registry, dir).load(manifest)
           val job = new EadLgdJob(session, connection, profiler, registry, dir)
-          val validator = new ResultValidator(session, connection, profiler, registry, runId, dir, executions.toSet)
+          val validator = new ResultValidator(session, connection, profiler, registry, dir, executions.toSet)
           val results = executions.map { execution =>
-            val result = job.run(JobInput(inputs, config, runId, execution))
+            val result = job.run(JobInput(inputs, config, execution))
             validator.validate(result, inputs, config)
             result
           }
@@ -51,6 +51,7 @@ Find each query ID in Snowsight Query History, then open Query Profile.
 Final CTAS executes the full plan over all five input tables.
 Table/column lineage worksheet: sql/E1-inspect-lineage.sql.
 Expected six-table graph: E1-expected-table-lineage.graphml.
+Profile-derived six-table graph: E1-profile-table-lineage.graphml.
 """
           Json.writeText(dir.resolve("run-summary.md"), summary)
           lines.foreach(println)

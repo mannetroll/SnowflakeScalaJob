@@ -94,5 +94,7 @@ output. Execute that worksheet to query observed upstream table lineage and
 TOTAL_EAD/LGD_AMOUNT column lineage using `SNOWFLAKE.CORE.GET_LINEAGE`.
 The six table nodes are distinct from operator nodes in these CSV exports.
 The run also writes `E1-expected-table-lineage.graphml` for an expected
-six-node table graph in yEd; use `GET_LINEAGE` for Snowflake's observed edges.
+six-node table graph and `E1-profile-table-lineage.graphml` for the source
+tables observed in the final CTAS profile. Use `GET_LINEAGE` for Snowflake's
+catalog lineage when the account supports it.
 See the [six-table example](../README.md#six-table-lineage-example).

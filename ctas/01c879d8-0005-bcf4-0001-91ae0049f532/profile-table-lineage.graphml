@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:y="http://www.yworks.com/xml/graphml">
+  <key id="graphics" for="node" yfiles.type="nodegraphics"/>
+  <key id="edge_graphics" for="edge" yfiles.type="edgegraphics"/>
+  <key id="name" for="node" attr.name="table_name" attr.type="string"/>
+  <key id="evidence" for="graph" attr.name="evidence" attr.type="string"/>
+  <graph id="table_lineage" edgedefault="directed">
+    <data key="evidence">Final CTAS 01c879d8-0005-bcf4-0001-91ae0049f532: observed TableScan sources; edges to CTAS target inferred from the query plan</data>
+    <node id="table_0">
+      <data key="name">RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS</data>
+      <data key="graphics"><y:ShapeNode>
+        <y:Geometry x="30" y="30" width="540" height="70"/>
+        <y:Fill color="#E0F2FE" transparent="false"/>
+        <y:BorderStyle color="#52677F" type="line" width="1.0"/>
+        <y:NodeLabel>RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNTS</y:NodeLabel>
+        <y:Shape type="roundrectangle"/>
+      </y:ShapeNode></data>
+    </node>
+    <node id="table_1">
+      <data key="name">RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL</data>
+      <data key="graphics"><y:ShapeNode>
+        <y:Geometry x="30" y="160" width="540" height="70"/>
+        <y:Fill color="#E0F2FE" transparent="false"/>
+        <y:BorderStyle color="#52677F" type="line" width="1.0"/>
+        <y:NodeLabel>RISKDEMO.EAD_LGD_DEMO.EAD_ACCOUNT_COLLATERAL</y:NodeLabel>
+        <y:Shape type="roundrectangle"/>
+      </y:ShapeNode></data>
+    </node>
+    <node id="table_2">
+      <data key="name">RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS</data>
+      <data key="graphics"><y:ShapeNode>
+        <y:Geometry x="30" y="290" width="540" height="70"/>
+        <y:Fill color="#E0F2FE" transparent="false"/>
+        <y:BorderStyle color="#52677F" type="line" width="1.0"/>
+        <y:NodeLabel>RISKDEMO.EAD_LGD_DEMO.EAD_COLLATERAL_ASSETS</y:NodeLabel>
+        <y:Shape type="roundrectangle"/>
+      </y:ShapeNode></data>
+    </node>
+    <node id="table_3">
+      <data key="name">RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS</data>
+      <data key="graphics"><y:ShapeNode>
+        <y:Geometry x="30" y="420" width="540" height="70"/>
+        <y:Fill color="#E0F2FE" transparent="false"/>
+        <y:BorderStyle color="#52677F" type="line" width="1.0"/>
+        <y:NodeLabel>RISKDEMO.EAD_LGD_DEMO.EAD_CUSTOMERS</y:NodeLabel>
+        <y:Shape type="roundrectangle"/>
+      </y:ShapeNode></data>
+    </node>
+    <node id="table_4">
+      <data key="name">RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES</data>
+      <data key="graphics"><y:ShapeNode>
+        <y:Geometry x="30" y="550" width="540" height="70"/>
+        <y:Fill color="#E0F2FE" transparent="false"/>
+        <y:BorderStyle color="#52677F" type="line" width="1.0"/>
+        <y:NodeLabel>RISKDEMO.EAD_LGD_DEMO.EAD_EXPECTED_RECOVERIES</y:NodeLabel>
+        <y:Shape type="roundrectangle"/>
+      </y:ShapeNode></data>
+    </node>
+    <node id="table_5">
+      <data key="name">RISKDEMO.EAD_LGD_DEMO.EAD_OUTPUT</data>
+      <data key="graphics"><y:ShapeNode>
+        <y:Geometry x="650" y="290" width="540" height="70"/>
+        <y:Fill color="#DCFCE7" transparent="false"/>
+        <y:BorderStyle color="#52677F" type="line" width="1.0"/>
+        <y:NodeLabel>RISKDEMO.EAD_LGD_DEMO.EAD_OUTPUT</y:NodeLabel>
+        <y:Shape type="roundrectangle"/>
+      </y:ShapeNode></data>
+    </node>
+    <edge id="edge_0" source="table_0" target="table_5">
+      <data key="edge_graphics"><y:PolyLineEdge>
+        <y:LineStyle color="#71839A" type="line" width="1.5"/>
+        <y:Arrows source="none" target="standard"/>
+        <y:BendStyle smoothed="false"/>
+      </y:PolyLineEdge></data>
+    </edge>
+    <edge id="edge_1" source="table_1" target="table_5">
+      <data key="edge_graphics"><y:PolyLineEdge>
+        <y:LineStyle color="#71839A" type="line" width="1.5"/>
+        <y:Arrows source="none" target="standard"/>
+        <y:BendStyle smoothed="false"/>
+      </y:PolyLineEdge></data>
+    </edge>
+    <edge id="edge_2" source="table_2" target="table_5">
+      <data key="edge_graphics"><y:PolyLineEdge>
+        <y:LineStyle color="#71839A" type="line" width="1.5"/>
+        <y:Arrows source="none" target="standard"/>
+        <y:BendStyle smoothed="false"/>
+      </y:PolyLineEdge></data>
+    </edge>
+    <edge id="edge_3" source="table_3" target="table_5">
+      <data key="edge_graphics"><y:PolyLineEdge>
+        <y:LineStyle color="#71839A" type="line" width="1.5"/>
+        <y:Arrows source="none" target="standard"/>
+        <y:BendStyle smoothed="false"/>
+      </y:PolyLineEdge></data>
+    </edge>
+    <edge id="edge_4" source="table_4" target="table_5">
+      <data key="edge_graphics"><y:PolyLineEdge>
+        <y:LineStyle color="#71839A" type="line" width="1.5"/>
+        <y:Arrows source="none" target="standard"/>
+        <y:BendStyle smoothed="false"/>
+      </y:PolyLineEdge></data>
+    </edge>
+  </graph>
+</graphml>
