@@ -2,6 +2,7 @@
 .gradle/
 .gradle-home/
 build/
+output/
 out/
 *.class
 *.jar

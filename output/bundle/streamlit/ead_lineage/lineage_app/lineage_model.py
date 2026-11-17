@@ -1,1 +1,0 @@
-/Users/drtobbe/github/SnowflakeScalaJob/lineage_app/lineage_model.py

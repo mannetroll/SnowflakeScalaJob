@@ -13,25 +13,22 @@ a CTAS are included, and repeated operator numbers remain distinct.
 
 ## Role access
 
-The configured `SYSADMIN` setup has been verified. To use another existing role,
-an authorized administrator can grant:
+The job and app use `EAD_ROLE`. It has these warehouse and demo-schema grants:
 
 ```sql
 GRANT USAGE, MONITOR ON WAREHOUSE SCALING_BENCH_WH
-  TO ROLE PROFILE_EXPORT_ROLE;
+  TO ROLE EAD_ROLE;
 
 GRANT USAGE ON DATABASE RISKDEMO
-  TO ROLE PROFILE_EXPORT_ROLE;
+  TO ROLE EAD_ROLE;
 
 GRANT USAGE ON SCHEMA RISKDEMO.EAD_LGD_DEMO
-  TO ROLE PROFILE_EXPORT_ROLE;
+  TO ROLE EAD_ROLE;
 ```
 
-Replace `PROFILE_EXPORT_ROLE` with the role assigned to your user. `MONITOR`
-allows reading the profile of queries executed on that warehouse; `OPERATE`
-also satisfies that requirement. `USAGE` on the export warehouse allows the
-CSV export to run. If the original query used a different warehouse, grant
-`MONITOR` on that warehouse as well.
+`MONITOR` allows reading profiles of queries executed on that warehouse.
+`USAGE` allows the export query to run. If the original query used a different
+warehouse, the role also needs `MONITOR` there.
 
 See Snowflake's [operator statistics privileges](https://docs.snowflake.com/en/sql-reference/functions/get_query_operator_stats)
 and [access control privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges).
@@ -49,7 +46,7 @@ and [access control privileges](https://docs.snowflake.com/en/user-guide/securit
    dedicated role above:
 
    ```sql
-   USE ROLE PROFILE_EXPORT_ROLE;
+   USE ROLE EAD_ROLE;
    USE WAREHOUSE SCALING_BENCH_WH;
    USE DATABASE RISKDEMO;
    USE SCHEMA EAD_LGD_DEMO;

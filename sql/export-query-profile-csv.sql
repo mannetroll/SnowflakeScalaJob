@@ -3,7 +3,7 @@
 SET QP_QUERY_ID = '01c73375-0005-833e-0001-91ae00232802';
 
 -- This project's approved context; adjust these four statements for another account.
-USE ROLE SYSADMIN;
+USE ROLE EAD_ROLE;
 USE WAREHOUSE SCALING_BENCH_WH;
 USE DATABASE RISKDEMO;
 USE SCHEMA EAD_LGD_DEMO;

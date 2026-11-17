@@ -1,1 +1,0 @@
-/Users/drtobbe/github/SnowflakeScalaJob/lineage_app/__init__.py

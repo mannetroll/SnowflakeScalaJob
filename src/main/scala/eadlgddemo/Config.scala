@@ -98,6 +98,7 @@ object SessionFactory {
   def open(connection: ConnectionConfig, config: DemoConfig): Session = {
     val session = Session.builder.configs(connection.options).create
     try {
+      session.sql("USE SECONDARY ROLES NONE").collect()
       session.sql(s"ALTER SESSION SET USE_CACHED_RESULT = FALSE, STATEMENT_TIMEOUT_IN_SECONDS = ${config.statementTimeoutSeconds}, TIMEZONE = 'UTC'").collect()
       session
     } catch { case scala.util.control.NonFatal(e) =>

@@ -1,5 +1,5 @@
--- One-time setup authorized for this demonstration.
--- Execute under the user-approved role with CREATE DATABASE permission.
+-- Run after each DROP DATABASE RISKDEMO.
+-- SYSADMIN creates the demo container; EAD_ROLE runs the Scala job.
 -- The Scala job itself does not provision databases, schemas or warehouses.
 -- Verify the existing warehouse is X-Small before starting the live ScalaTest.
 USE ROLE SYSADMIN;
@@ -7,6 +7,9 @@ SHOW WAREHOUSES LIKE 'SCALING_BENCH_WH';
 
 CREATE DATABASE IF NOT EXISTS RISKDEMO;
 CREATE SCHEMA IF NOT EXISTS RISKDEMO.EAD_LGD_DEMO;
+GRANT USAGE ON DATABASE RISKDEMO TO ROLE EAD_ROLE;
+GRANT USAGE, CREATE TABLE, CREATE VIEW, CREATE STAGE
+  ON SCHEMA RISKDEMO.EAD_LGD_DEMO TO ROLE EAD_ROLE;
 
 USE DATABASE RISKDEMO;
 USE SCHEMA EAD_LGD_DEMO;

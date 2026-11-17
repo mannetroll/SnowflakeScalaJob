@@ -1,1 +1,0 @@
-/Users/drtobbe/github/SnowflakeScalaJob/streamlit_app.py

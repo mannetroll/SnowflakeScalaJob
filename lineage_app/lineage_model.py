@@ -1,7 +1,32 @@
 """Build table lineage and join details from a Snowflake CTAS query profile."""
 
 import json
+import re
 from collections import defaultdict
+
+
+QUERY_ID = re.compile(r"[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}\Z")
+
+
+def parse_query_id(value):
+    query_id = value.strip()
+    if not QUERY_ID.fullmatch(query_id):
+        raise ValueError("Enter a Snowflake query ID in UUID form.")
+    return query_id.lower()
+
+
+def fetch_profile(session, query_id):
+    query_id = parse_query_id(query_id)
+    rows = session.sql(
+        "SELECT QUERY_ID, STEP_ID, OPERATOR_ID, OPERATOR_TYPE, "
+        "TO_JSON(OPERATOR_ATTRIBUTES) AS OPERATOR_ATTRIBUTES, "
+        "TO_JSON(OPERATOR_STATISTICS) AS OPERATOR_STATISTICS "
+        f"FROM TABLE(GET_QUERY_OPERATOR_STATS('{query_id}')) "
+        "ORDER BY STEP_ID, OPERATOR_ID"
+    ).collect()
+    if not rows:
+        raise ValueError("No operator profile was returned for this query ID.")
+    return {"queryId": query_id, "operators": [row.as_dict() for row in rows]}
 
 
 def variant(value):

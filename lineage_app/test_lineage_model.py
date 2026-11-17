@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-from lineage_app.lineage_model import table_lineage
+from lineage_app.lineage_model import parse_query_id, table_lineage
 from lineage_app.lineage_view import graph_html
 
 
@@ -11,6 +11,12 @@ CAPTURE = ROOT / "ctas/01c879d8-0005-bcf4-0001-91ae0049f532"
 
 
 class LineageModelTest(unittest.TestCase):
+    def test_query_id_validation(self):
+        self.assertEqual(parse_query_id(" 01C879D8-0005-BCF4-0001-91AE0049F532 "),
+                         "01c879d8-0005-bcf4-0001-91ae0049f532")
+        with self.assertRaises(ValueError):
+            parse_query_id("x'); DROP DATABASE RISKDEMO; --")
+
     def test_archived_ctas_matches_saved_lineage(self):
         profile = json.loads((CAPTURE / "query-profile.json").read_text())
         saved = json.loads((CAPTURE / "profile-table-lineage.json").read_text())

@@ -97,8 +97,9 @@ nodes. The screenshots and example GraphML illustrate an archived profile.
 
 The [Streamlit table-lineage app](lineage_app/README.md) displays the same
 profile-derived six-table graph inside Snowflake, with clickable tables, zoom,
-scan counts, and join conditions. You can upload a saved CTAS profile JSON from
-a new run; Enterprise Edition is not required.
+scan counts, and join conditions. Enter the final CTAS query ID from a run;
+the app calls `GET_QUERY_OPERATOR_STATS` directly. Enterprise Edition is not
+required.
 
 ## Build and run locally
 
@@ -221,14 +222,16 @@ set `JAVA_TOOL_OPTIONS=-Dnet.snowflake.jdbc.enableBouncyCastle=true` (JDBC 3.x).
 TLS and OCSP checks remain enabled. See
 [JDBC key-file properties](https://docs.snowflake.com/en/developer-guide/jdbc/jdbc-configure).
 
-The role needs USAGE on the supplied warehouse, database and schema, plus CREATE
-TABLE, CREATE VIEW and CREATE STAGE on the schema. It operates on its own objects.
-Operator evidence also requires **MONITOR or OPERATE on the warehouse**. No
-ACCOUNTADMIN role or automatic grants are requested.
+`EAD_ROLE` runs the job and owns the Streamlit app. It needs USAGE on the
+warehouse, demo database and schema, plus CREATE TABLE, CREATE VIEW and CREATE
+STAGE on the demo schema. Operator evidence requires MONITOR on the warehouse.
+[Role setup](sql/setup-ead-role.sql) is a one-time administrator action;
+[demo setup](sql/setup-riskdemo.sql) grants access again after each database
+drop and recreation. The job itself does not run as ACCOUNTADMIN or SYSADMIN.
 
 ## Complete job through ScalaTest: three checkpoints and one CTAS
 
-The configured environment for this workspace is role `SYSADMIN`, existing
+The configured environment for this workspace is role `EAD_ROLE`, existing
 X-Small warehouse `SCALING_BENCH_WH`, database `RISKDEMO` and schema
 `EAD_LGD_DEMO`. The database/schema were provisioned separately using
 [the setup worksheet](sql/setup-riskdemo.sql); their creation is not part of the
@@ -238,7 +241,7 @@ Set connection/authentication first. For the existing local key configuration,
 supply the sandbox context if it is not already in your local properties file:
 
 ```bash
-export SNOWFLAKE_ROLE=SYSADMIN
+export SNOWFLAKE_ROLE=EAD_ROLE
 export SNOWFLAKE_WAREHOUSE=SCALING_BENCH_WH
 export SNOWFLAKE_DATABASE=RISKDEMO
 export SNOWFLAKE_SCHEMA=EAD_LGD_DEMO
@@ -253,7 +256,7 @@ RUN_SNOWFLAKE_IT=true CUSTOMER_COUNT=100 KEEP_OBJECTS=false \
 ```
 
 ```powershell
-$env:SNOWFLAKE_ROLE = 'SYSADMIN'
+$env:SNOWFLAKE_ROLE = 'EAD_ROLE'
 $env:SNOWFLAKE_WAREHOUSE = 'SCALING_BENCH_WH'
 $env:SNOWFLAKE_DATABASE = 'RISKDEMO'
 $env:SNOWFLAKE_SCHEMA = 'EAD_LGD_DEMO'
@@ -442,7 +445,7 @@ and [yWorks GraphML format](https://docs.yworks.com/yfiles/doc/developers-guide/
 Run [sql/export-query-profile-csv.sql](sql/export-query-profile-csv.sql) in one
 Snowflake session. Set `QP_QUERY_ID` at the top to the required query ID; the
 copied `Query - <UUID>` heading is also accepted. The supplied context uses
-`SYSADMIN`, `SCALING_BENCH_WH`, and `RISKDEMO.EAD_LGD_DEMO`.
+`EAD_ROLE`, `SCALING_BENCH_WH`, and `RISKDEMO.EAD_LGD_DEMO`.
 
 The script snapshots the existing operator statistics once and writes exactly
 named, uncompressed files to your Snowflake user stage:
