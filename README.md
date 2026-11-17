@@ -1,5 +1,14 @@
 # Snowflake EAD/LGD query-profile demo
 
+![Streamlit app with the latest final CTAS loaded: five source tables feeding EAD_OUTPUT](images/Streamlit-CTAS-lineage-20261117.jpg)
+
+The [Streamlit table-lineage app](lineage_app/README.md) is shown with the latest
+run at capture time (`20261117_194512`, query
+`01c87a25-0005-bcf1-0001-91ae004a2a7a`) loaded.
+It reads `GET_QUERY_OPERATOR_STATS` and draws five observed source tables feeding
+the CTAS output. The arrows are inferred from the query profile, not native
+`GET_LINEAGE` results.
+
 A standalone Gradle/Scala/Snowpark project that generates five real Parquet inputs,
 loads them into Snowflake, runs three native `DataFrame.cacheResult()` checkpoints,
 and executes a customer-level `CREATE TRANSIENT TABLE ... AS SELECT`. The live
@@ -35,21 +44,28 @@ Checkpoint profiles provide separate views of each calculation stage.
 
 ### Final CTAS in Snowflake
 
-The archived screenshot below shows query `01c73375-0005-833e-0001-91ae00232802` on
-`SCALING_BENCH_WH` (X-Small). Select **Step 2** to see the connected graph: scans,
-window ranking, aggregation and joins feed the CTAS write of 100,000 rows.
-**Step 1** contains the table-creation operation. This query has 13 operators in
-total: one in Step 1 and twelve in Step 2. Follow the arrows upward from the scans
-to the write; displayed execution percentages apply to the selected step.
+The Snowsight screenshot below shows **Step 2** of final CTAS query
+`01c879c7-0005-bcf4-0001-91ae0049ec2a`. Its 72 operators include scans,
+joins, window functions and aggregations feeding the write of 100,000 rows.
+**Step 1** contains the separate table-creation operation. Follow the arrows
+upward from the scans to the write; displayed execution percentages apply to
+the selected step.
 
-[![Snowflake Query Profile showing Step 2 of the final CTAS, with scans, joins, aggregation and window ranking](images/QueryProfile.png)](images/QueryProfile.png)
+[![Snowflake Query Profile showing 72 operators in Step 2 of the final CTAS](images/QueryProfile-20261117.png)](images/QueryProfile-20261117.png)
 
-### The same profile in yEd
+A separate captured CTAS query (`01c879d8-0005-bcf4-0001-91ae0049f532`)
+has a [saved operator profile](ctas/01c879d8-0005-bcf4-0001-91ae0049f532/query-profile.svg)
+and a [five-source table graph](ctas/01c879d8-0005-bcf4-0001-91ae0049f532/profile-table-lineage.svg),
+both rendered from its [recorded profile data](ctas/01c879d8-0005-bcf4-0001-91ae0049f532/README.md).
+
+### Earlier profile in yEd
 
 The [ScalaTest GraphML exporter](#export-a-query-profile-to-yed-graphml-through-scalatest)
 turns the recorded operator statistics into an editable graph with full object
-names, row counts and execution percentages. The screenshot below shows the
-exported CTAS profile in yEd, with separate groups for the two execution steps.
+names, row counts and execution percentages. This older example is query
+`01c73375-0005-833e-0001-91ae00232802`, with one operator in Step 1 and
+twelve in Step 2. The screenshot below shows its exported profile in yEd, with
+separate groups for the two execution steps.
 Open the [example GraphML file](docs/qp-demo.graphml) in yEd to explore it.
 
 [![The exported CTAS Query Profile in yEd, with full object names and connected operator nodes](images/yEd.png)](images/yEd.png)
@@ -66,7 +82,7 @@ A single execution creates five named transient source tables (`EAD_CUSTOMERS`,
 All five sources contribute to `EAD_OUTPUT`.
 The three temporary checkpoint caches are diagnostic snapshots.
 
-Run the single-run command above with `KEEP_OBJECTS=true` to retain all six
+Run the single-run command below with `KEEP_OBJECTS=true` to retain all six
 tables after the session ends. The determinism suite retains seven tables:
 five shared inputs and two outputs. With `KEEP_OBJECTS=false`, cleanup removes
 all demo tables. Run [drop-demo-tables.sql](sql/drop-demo-tables.sql) as
@@ -92,13 +108,14 @@ Metadata may appear after the job completes; inspect the output's Lineage tab
 in Catalog Explorer or rerun the worksheet later if results are initially empty.
 The operator GraphML/CSV exporters continue to export query execution operators;
 their node count depends on the optimizer and is independent of the six table
-nodes. The screenshots and example GraphML illustrate an archived profile.
+nodes. The yEd screenshot and example GraphML illustrate the earlier archived
+profile; the Snowsight screenshot and saved SVGs show newer CTAS runs.
 
-The [Streamlit table-lineage app](lineage_app/README.md) displays the same
+The [Streamlit table-lineage app](lineage_app/README.md) displays a
 profile-derived six-table graph inside Snowflake, with clickable tables, zoom,
-scan counts, and join conditions. Enter the final CTAS query ID from a run;
-the app calls `GET_QUERY_OPERATOR_STATS` directly. Enterprise Edition is not
-required.
+scan counts and join conditions. Its sidebar lists the latest five final CTAS
+query IDs, or you can enter one manually. The app calls
+`GET_QUERY_OPERATOR_STATS` directly. Enterprise Edition is not required.
 
 ## Build and run locally
 
